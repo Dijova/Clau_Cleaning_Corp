@@ -1,0 +1,360 @@
+<title>Clau Cleaning Corp Website Proposal</title>
+<meta name="robots" content="noindex">
+<style>
+/* Layout: deep forest-green presentation board; logo work first, then the site inside device frames, short Spanish captions for the client. */
+@font-face { font-family: "Comfortaa"; font-weight: 500 700; src: url({{font-comfortaa}}) format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 400 600; src: url({{font-inter}}) format("woff2"); }
+:root {
+    --bg: #0A2A19;
+    --panel: #0F3D25;
+    --panel-2: #134A2D;
+    --fg: #EEF6EA;
+    --muted: #A9C2B0;
+    --leaf: #86BC42;
+    --green: #1F7F45;
+    --paper: #FFFFFF;
+    --line: rgba(238, 246, 234, .12);
+    --display: "Comfortaa", "Varela Round", "Segoe UI", Arial, sans-serif;
+    --body: "Inter", "Segoe UI", Arial, sans-serif;
+    color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--body); line-height: 1.6; }
+.wrap { width: min(1180px, 100%); margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); }
+section { padding-block: clamp(56px, 8vw, 96px); border-top: 1px solid var(--line); }
+h1, h2, h3 { font-family: var(--display); line-height: 1.2; margin: 0; text-wrap: balance; font-weight: 700; }
+h2 { font-size: clamp(1.6rem, 3.2vw, 2.4rem); }
+h3 { font-size: 1.05rem; }
+p { margin: 0; }
+.label { font-weight: 600; font-size: .75rem; letter-spacing: .16em; text-transform: uppercase; color: var(--leaf); }
+.lead { color: var(--muted); font-size: 1.05rem; max-width: 64ch; }
+.head { display: grid; gap: .7rem; margin-bottom: 40px; }
+.note { font-size: .82rem; color: var(--muted); }
+
+/* Cover */
+.cover { border-top: 0; padding-block: clamp(36px, 6vw, 64px) clamp(56px, 8vw, 96px); position: relative; overflow: hidden; }
+.cover::before { content: ""; position: absolute; width: 900px; height: 900px; right: -300px; top: -380px; border-radius: 50%; background: radial-gradient(circle, rgba(134,188,66,.22), transparent 62%); pointer-events: none; }
+.topline { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 48px; color: var(--muted); font-size: .85rem; }
+.topline img { height: 34px; width: auto; }
+.cover-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: clamp(32px, 5vw, 64px); align-items: center; position: relative; }
+.cover h1 { font-size: clamp(2rem, 4.4vw, 3.2rem); margin: .8rem 0 1.1rem; }
+.cover h1 span { color: var(--leaf); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.6rem; }
+.chip { border: 1px solid var(--line); background: var(--panel); border-radius: 999px; padding: .35rem .85rem; font-size: .82rem; }
+
+/* Device frames */
+.stage { position: relative; padding-bottom: 40px; min-width: 0; }
+.browser { border-radius: 12px; background: var(--panel-2); box-shadow: 0 30px 80px rgba(0,0,0,.45); overflow: hidden; border: 1px solid var(--line); }
+.browser-bar { display: flex; align-items: center; gap: 6px; padding: 10px 12px; background: var(--panel); }
+.browser-bar i { width: 10px; height: 10px; border-radius: 50%; background: #3E6B50; display: block; }
+.browser-bar span { margin-left: 10px; flex: 1; font-size: .72rem; color: var(--muted); background: var(--bg); border-radius: 6px; padding: 3px 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.browser img, .phone img, .tablet img { display: block; width: 100%; height: auto; max-width: 100%; }
+.phone { width: 30%; max-width: 200px; border-radius: 26px; padding: 7px; background: #04140B; box-shadow: 0 24px 60px rgba(0,0,0,.55); border: 1px solid var(--line); }
+.phone img { border-radius: 20px; }
+.stage .phone { position: absolute; right: -14px; bottom: 0; }
+.tablet { border-radius: 22px; padding: 10px; background: #04140B; border: 1px solid var(--line); box-shadow: 0 24px 60px rgba(0,0,0,.45); }
+.tablet img { border-radius: 12px; }
+
+/* Logo */
+.compare { display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px; align-items: stretch; margin-bottom: 28px; }
+.compare figure { margin: 0; display: grid; gap: 10px; min-width: 0; }
+.compare .arrow { align-self: center; font-size: 2rem; color: var(--leaf); }
+.tile { background: var(--paper); border-radius: 16px; padding: 24px; display: grid; place-items: center; min-height: 240px; }
+.tile.dark { background: var(--panel); border: 1px solid var(--line); }
+.tile img { max-height: 190px; width: auto; max-width: 100%; }
+.tile.photo { padding: 0; overflow: hidden; }
+.tile.photo img { max-height: none; width: 100%; height: 100%; object-fit: cover; }
+.tile.van { min-height: 0; }
+.tile.van img { height: auto; object-fit: initial; }
+figcaption { font-size: .85rem; color: var(--muted); text-align: center; }
+.family { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 36px; }
+.family figure { margin: 0; display: grid; gap: 10px; min-width: 0; }
+.family .tile { min-height: 180px; }
+.family .tile img { max-height: 130px; }
+.family .tile.wide img { max-height: 54px; }
+.family .tile.icon img { max-height: 110px; }
+.tips { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; padding: 0; margin: 0; list-style: none; counter-reset: t; }
+.tips li { counter-increment: t; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; display: grid; gap: 6px; }
+.tips li::before { content: "Sugerencia " counter(t); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--leaf); font-weight: 600; }
+.tips b { font-family: var(--display); font-weight: 700; }
+.tips span { color: var(--muted); font-size: .92rem; }
+
+/* Brand */
+.brand-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 24px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+.swatches { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.sw { border-radius: 10px; overflow: hidden; border: 1px solid var(--line); font-size: .72rem; }
+.sw b { display: block; height: 58px; }
+.sw span { display: block; padding: 6px 8px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.type-sample { font-family: var(--display); font-weight: 700; font-size: 2.3rem; line-height: 1; }
+.type-body { font-size: 1.4rem; font-weight: 600; }
+
+/* Sitemap */
+.map-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; counter-reset: s; padding: 0; margin: 0; list-style: none; }
+.map-list li { counter-increment: s; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; }
+.map-list li::before { content: counter(s, decimal-leading-zero); grid-row: span 2; font-family: var(--display); font-weight: 700; color: var(--leaf); font-variant-numeric: tabular-nums; }
+.map-list b { font-family: var(--display); font-weight: 700; }
+.map-list small { color: var(--muted); font-size: .82rem; }
+.map-list li.new { border-color: rgba(134,188,66,.6); }
+.map-list li.new b::after { content: "Nuevo"; margin-left: 8px; font-family: var(--body); font-size: .66rem; font-weight: 600; color: var(--bg); background: var(--leaf); border-radius: 999px; padding: 1px 7px; vertical-align: 2px; }
+
+.scroller { max-height: 720px; overflow-y: auto; overscroll-behavior: contain; }
+.devices { display: grid; grid-template-columns: 1.3fr repeat(3, 1fr); gap: 20px; align-items: end; }
+.devices figure { margin: 0; display: grid; gap: 10px; min-width: 0; }
+.devices .phone { width: 100%; max-width: 230px; justify-self: center; }
+.lang-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.lang-grid figure { margin: 0; display: grid; gap: 10px; min-width: 0; }
+.feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.feat-grid ul { margin: 0; padding-left: 1.1rem; color: var(--muted); font-size: .92rem; display: grid; gap: 6px; }
+.feat-grid h3 { display: flex; align-items: center; gap: 10px; }
+.feat-grid h3 svg { width: 22px; height: 22px; color: var(--leaf); flex: none; }
+.todo { display: grid; gap: 10px; padding: 0; margin: 0; list-style: none; }
+.todo li { display: grid; grid-template-columns: 26px 1fr; gap: 12px; align-items: start; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+.todo li::before { content: ""; width: 20px; height: 20px; margin-top: 2px; border: 2px solid var(--leaf); border-radius: 6px; }
+.todo b { font-family: var(--display); font-weight: 700; }
+.todo span { color: var(--muted); font-size: .92rem; display: block; }
+footer { padding-block: 32px; border-top: 1px solid var(--line); color: var(--muted); font-size: .82rem; text-align: center; }
+.mt { margin-top: 12px; }
+.sub { margin: 8px 0 18px; }
+
+@media (max-width: 900px) {
+    .cover-grid, .lang-grid { grid-template-columns: 1fr; }
+    .devices { grid-template-columns: repeat(2, 1fr); }
+    .devices figure:first-child { grid-column: 1 / -1; }
+    .compare { grid-template-columns: 1fr; }
+    .compare .arrow { justify-self: center; transform: rotate(90deg); }
+}
+@media (max-width: 520px) {
+    .devices { gap: 12px; }
+    .stage .phone { right: 0; width: 34%; }
+    .swatches { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+
+<header class="cover">
+    <div class="wrap">
+        <div class="topline">
+            <img src="{{logo-horizontal-white}}" alt="Clau Cleaning Corp">
+            <span>Propuesta de sitio web · claucleaningcorp.com · Octubre 2026</span>
+        </div>
+        <div class="cover-grid">
+            <div>
+                <p class="label">Mockup para presentación</p>
+                <h1>Más de 20 años de confianza, ahora con <span>un sitio web a la altura</span></h1>
+                <p class="lead">Sitio en inglés con versión completa en español, pensado para conseguir contratos con clínicas, consultorios médicos y escuelas, y clientes de limpieza de casas en Massachusetts.</p>
+                <div class="chips">
+                    <span class="chip">Logo de siempre, en vector</span>
+                    <span class="chip">Inglés + Español</span>
+                    <span class="chip">Galería de trabajos</span>
+                    <span class="chip">Clientes</span>
+                    <span class="chip">Formulario seguro</span>
+                    <span class="chip">SEO local</span>
+                    <span class="chip">WhatsApp</span>
+                </div>
+            </div>
+            <div class="stage">
+                <div class="browser">
+                    <div class="browser-bar"><i></i><i></i><i></i><span>claucleaningcorp.com</span></div>
+                    <img src="{{desk-hero}}" alt="Vista de escritorio: portada del sitio">
+                </div>
+                <div class="phone"><img src="{{mob-hero}}" alt="Vista móvil de la portada"></div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section>
+        <div class="wrap">
+            <div class="head">
+                <p class="label">Logotipo</p>
+                <h2>El mismo logo de siempre, listo para lo digital</h2>
+                <p class="lead">Redibujamos el logo en vector para que se vea nítido en cualquier tamaño: sitio web, camioneta, uniformes y redes. Conserva sus letras redondeadas, la escoba que forma la “l” y los dos verdes.</p>
+            </div>
+            <div class="compare">
+                <figure><div class="tile photo"><img src="{{original-logo}}" alt="Logo original de Facebook"></div><figcaption>Original (foto de perfil de Facebook)</figcaption></figure>
+                <div class="arrow" aria-hidden="true">→</div>
+                <figure><div class="tile"><img src="{{logo-classic}}" alt="Logo clásico redibujado en vector"></div><figcaption>Clásico redibujado en vector: fiel al original</figcaption></figure>
+            </div>
+
+            <h3 class="sub">Propuesta de actualización (sin perder la esencia)</h3>
+            <div class="family">
+                <figure><div class="tile"><img src="{{logo}}" alt="Logo actualizado apilado"></div><figcaption>Apilado actualizado: camioneta, uniformes, papelería</figcaption></figure>
+                <figure><div class="tile dark"><img src="{{logo-white}}" alt="Logo actualizado sobre fondo oscuro"></div><figcaption>Versión para fondos oscuros</figcaption></figure>
+                <figure><div class="tile wide"><img src="{{logo-horizontal}}" alt="Logo horizontal"></div><figcaption>Horizontal: encabezado web, facturas, firma de correo</figcaption></figure>
+                <figure><div class="tile icon"><img src="{{favicon}}" alt="Ícono Cl con escoba"></div><figcaption>Ícono: perfil de Facebook, Instagram, WhatsApp y pestaña del navegador</figcaption></figure>
+            </div>
+            <ol class="tips">
+                <li><b>Mantener lo que se reconoce</b><span>Letras redondeadas, la escoba en la “l”, el apilado Clau / Cleaning / Corp y los verdes. Es lo que los clientes recuerdan después de 20 años.</span></li>
+                <li><b>Colores planos, sin contorno ni brillo</b><span>El doble contorno y el resplandor se pierden en tamaños pequeños y en bordados. Con colores planos el logo se lee igual de bien en un celular y en la camioneta.</span></li>
+                <li><b>Dos verdes con función</b><span>Verde oscuro para “Clau Cleaning” (lectura y contraste) y verde hoja para “Corp” y la escoba (el detalle que da personalidad).</span></li>
+                <li><b>Una familia de versiones</b><span>Apilado, horizontal, ícono y versión blanca. Cada pieza usa la que mejor encaja, sin deformar el logo.</span></li>
+                <li><b>Mango de la escoba en verde</b><span>El mango plateado se vuelve verde para unificar. Si prefieren conservar el plateado, la versión clásica lo mantiene.</span></li>
+                <li><b>Un solo nombre en todas partes</b><span>“Clau Cleaning Corp”, igual que en el logo. Conviene cambiar el nombre de la página de Facebook (hoy “CLAU Cleaning CORP”) y Google para que coincidan; ayuda al SEO local.</span></li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <div class="wrap">
+            <div class="head">
+                <p class="label">Identidad visual</p>
+                <h2>Colores y letras tomados del logo</h2>
+                <p class="lead">Los verdes salen directamente del logo y de la rotulación de la camioneta. Los títulos usan una tipografía redondeada de la misma familia visual que el logo.</p>
+            </div>
+            <div class="brand-grid">
+                <div class="card">
+                    <h3>Paleta de color</h3>
+                    <div class="swatches">
+                        <div class="sw"><b style="background:#0F3D25"></b><span>Bosque #0F3D25</span></div>
+                        <div class="sw"><b style="background:#1F7F45"></b><span>Verde #1F7F45</span></div>
+                        <div class="sw"><b style="background:#86BC42"></b><span>Hoja #86BC42</span></div>
+                        <div class="sw"><b style="background:#B9DB8A"></b><span>Hoja claro #B9DB8A</span></div>
+                        <div class="sw"><b style="background:#EFF6E8"></b><span>Fondo #EFF6E8</span></div>
+                        <div class="sw"><b style="background:#A3ABA7"></b><span>Plata #A3ABA7</span></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Tipografía</h3>
+                    <p class="type-sample">Comfortaa</p>
+                    <p class="note">Títulos: redondeada y amable, la más parecida a la letra del logo.</p>
+                    <p class="type-body">Inter</p>
+                    <p class="note">Textos y botones: diseñada para pantallas, muy legible en móvil.</p>
+                </div>
+                <div class="card">
+                    <h3>De la camioneta a la web</h3>
+                    <div class="tile photo van"><img src="{{original-van}}" alt="Camioneta de Clau Cleaning Corp con el logo y el teléfono"></div>
+                    <p class="note">La camioneta ya anuncia claucleaningcorp.com: el sitio usará ese dominio, el mismo teléfono y el servicio de alfombras y pisos que aparece rotulado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="wrap">
+            <div class="head">
+                <p class="label">Estructura</p>
+                <h2>Misma distribución que SGM, con secciones nuevas</h2>
+                <p class="lead">El orden guía al visitante desde la primera impresión hasta pedir la cotización.</p>
+            </div>
+            <ol class="map-list">
+                <li><b>Portada</b><small>Mensaje principal, llamada y cotización</small></li>
+                <li><b>Datos clave</b><small>20+ años, salud, escuelas, hogares</small></li>
+                <li><b>Nosotros</b><small>Especialización sanitaria y garantías</small></li>
+                <li><b>Servicios</b><small>8 servicios, incluye limpieza de casas y alfombras</small></li>
+                <li class="new"><b>Proceso</b><small>Cómo trabajamos en 4 pasos</small></li>
+                <li class="new"><b>Galería</b><small>Trabajos con filtros y visor ampliado</small></li>
+                <li class="new"><b>Clientes</b><small>Logos de clientes y reseña</small></li>
+                <li class="new"><b>Zona de servicio</b><small>Ciudades del Merrimack Valley</small></li>
+                <li class="new"><b>Preguntas frecuentes</b><small>Respuestas que también posicionan en Google</small></li>
+                <li><b>Cotización</b><small>Formulario seguro, teléfono, WhatsApp y correo</small></li>
+                <li><b>Mapa y pie de página</b><small>Contacto, redes y enlaces</small></li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <div class="wrap">
+            <div class="head">
+                <p class="label">Página completa</p>
+                <h2>Recorrido del sitio en escritorio</h2>
+                <p class="lead">Desplácese dentro del navegador para ver la página completa.</p>
+            </div>
+            <div class="browser">
+                <div class="browser-bar"><i></i><i></i><i></i><span>claucleaningcorp.com</span></div>
+                <div class="scroller" tabindex="0" aria-label="Página completa del sitio"><img src="{{desk-full}}" alt="Página completa del sitio en escritorio"></div>
+            </div>
+            <p class="note mt">Los recuadros verdes con íconos marcan dónde van las fotos. En el sitio publicado se muestran fotografías de limpieza, clínicas, escuelas y hogares, que luego se reemplazan por fotos propias de la empresa.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="wrap">
+            <div class="head">
+                <p class="label">Responsive</p>
+                <h2>Se ve bien en cualquier pantalla</h2>
+                <p class="lead">En el celular aparece un botón flotante para llamar con un toque, el canal que más usan administradores de clínicas, escuelas y propietarios de casas.</p>
+            </div>
+            <div class="devices">
+                <figure><div class="tablet"><img src="{{tab}}" alt="Vista en tableta"></div><figcaption>Tableta</figcaption></figure>
+                <figure><div class="phone"><img src="{{mob-menu}}" alt="Menú móvil con selector de idioma"></div><figcaption>Menú móvil</figcaption></figure>
+                <figure><div class="phone"><img src="{{mob-gallery}}" alt="Galería en móvil"></div><figcaption>Galería con filtros</figcaption></figure>
+                <figure><div class="phone"><img src="{{mob-form}}" alt="Formulario en móvil"></div><figcaption>Formulario</figcaption></figure>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="wrap">
+            <div class="head">
+                <p class="label">Bilingüe</p>
+                <h2>Inglés por defecto, español con un clic</h2>
+                <p class="lead">La versión en español es una página real (/es/), no una traducción automática. Google la indexa por separado y la muestra a quienes buscan en español.</p>
+            </div>
+            <div class="lang-grid">
+                <figure><div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>claucleaningcorp.com</span></div><img src="{{desk-hero}}" alt="Portada en inglés"></div><figcaption>English</figcaption></figure>
+                <figure><div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>claucleaningcorp.com/es/</span></div><img src="{{desk-es}}" alt="Portada en español"></div><figcaption>Español</figcaption></figure>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="wrap">
+            <div class="head">
+                <p class="label">Lo que no se ve</p>
+                <h2>Seguridad y posicionamiento incluidos</h2>
+            </div>
+            <div class="feat-grid">
+                <div class="card">
+                    <h3><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5zm-1 14-4-4 1.4-1.4L11 13.2l4.6-4.6L17 10z"/></svg>Formulario protegido</h3>
+                    <ul>
+                        <li>Datos guardados en una hoja privada de Google de la empresa</li>
+                        <li>Filtros anti-spam y anti-bots, límite de envíos</li>
+                        <li>Bloqueo de código malicioso y enlaces sospechosos</li>
+                        <li>Avisos por correo en texto plano, sin enlaces peligrosos</li>
+                        <li>Política de seguridad que impide scripts de terceros</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 2a8 8 0 0 1 6.3 12.9l5.4 5.4-1.4 1.4-5.4-5.4A8 8 0 1 1 10 2zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12z"/></svg>SEO local</h3>
+                    <ul>
+                        <li>Títulos optimizados para “commercial cleaning” y “house cleaning” en Dracut, MA</li>
+                        <li>Datos estructurados de negocio local para Google</li>
+                        <li>Preguntas frecuentes, ciudades atendidas y mapa</li>
+                        <li>Sitemap, robots.txt e imagen para compartir en redes</li>
+                        <li>Carga rápida: fuentes propias y fotos diferidas</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8z"/></svg>Redes y contacto</h3>
+                    <ul>
+                        <li>Facebook, Instagram y WhatsApp enlazados</li>
+                        <li>Teléfono +1 978-328-2406 con llamada directa</li>
+                        <li>claucleaningcorpc2@gmail.com</li>
+                        <li>1734 Lakeview Ave #169, Dracut, MA 01826</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="wrap">
+            <div class="head">
+                <p class="label">Siguientes pasos</p>
+                <h2>Lo que necesitamos del cliente</h2>
+            </div>
+            <ul class="todo">
+                <li><div><b>Elegir la versión del logo</b><span>Clásico redibujado o actualizado. Si existe el archivo original del diseñador (AI, PDF o SVG), compararlo con el redibujado.</span></div></li>
+                <li><div><b>Dominio claucleaningcorp.com</b><span>Recuperarlo o comprarlo; el sitio ya está preparado para ese dominio.</span></div></li>
+                <li><div><b>Fotos de trabajos reales</b><span>10 a 15 fotos de Facebook o del celular: clínicas, escuelas, casas, alfombras, antes y después.</span></div></li>
+                <li><div><b>Clientes y una reseña</b><span>Nombres o logos de clientes que autoricen aparecer, y una frase de recomendación.</span></div></li>
+                <li><div><b>Instagram y WhatsApp</b><span>Usuario de Instagram y confirmar que el WhatsApp es el +1 978-328-2406.</span></div></li>
+                <li><div><b>Confirmar datos</b><span>Años en el negocio, seguro, desinfectantes EPA y membresía ISSA (aparece en la camioneta) para mostrarla como sello de confianza.</span></div></li>
+            </ul>
+        </div>
+    </section>
+</main>
+<footer>
+    <div class="wrap">Clau Cleaning Corp · Propuesta de sitio web · Mockup de presentación</div>
+</footer>
