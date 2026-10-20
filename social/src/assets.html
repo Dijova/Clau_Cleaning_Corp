@@ -42,6 +42,9 @@ h1, h2, h3, .head { font-family: var(--head); font-weight: 700; line-height: 1.1
 #profile-icon img { width: 820px; height: 820px; }
 #profile-logo { width: 1080px; height: 1080px; background: var(--white); display: grid; place-items: center; }
 #profile-logo img { width: 860px; height: 473px; }
+/* Facebook / Instagram profile picture: icon optically centred and sized for the circular crop. */
+#profile-facebook { width: 1080px; height: 1080px; display: grid; place-items: center; background: radial-gradient(circle at 50% 38%, #165434 0%, var(--forest) 55%, var(--forest-deep) 100%); }
+#profile-facebook img { width: 910px; height: 910px; transform: translate(-40px, 23px); }
 
 /* Facebook cover: 1640 x 924. Desktop shows the middle 1640 x 624 band; phones show it all. */
 #fb-cover { width: 1640px; height: 924px; }
@@ -127,6 +130,7 @@ h1, h2, h3, .head { font-family: var(--head); font-weight: 700; line-height: 1.1
 <body>
 
 <!-- PROFILE PICTURES -->
+<div id="profile-facebook" data-export="profile-facebook.png"><img src="../../assets/img/favicon.svg" alt=""></div>
 <div id="profile-icon" data-export="profile-icon.png"><img src="../../assets/img/favicon.svg" alt=""></div>
 <div id="profile-logo" data-export="profile-logo.png"><img src="../../assets/img/logo.svg" alt=""></div>
 
@@ -134,7 +138,7 @@ h1, h2, h3, .head { font-family: var(--head); font-weight: 700; line-height: 1.1
 <div id="fb-cover" class="bg-forest broom-pattern" data-export="facebook-cover.png">
     <img class="logo" src="../../assets/img/logo-white.svg" alt="">
     <div class="inner">
-        <span class="tag">Dracut · Lowell · Merrimack Valley, MA</span>
+        <span class="tag">Serving all of Massachusetts &amp; New Hampshire</span>
         <h1>Commercial &amp; <span>House Cleaning</span></h1>
         <p class="services">Clinics · Schools · Offices · Homes · Carpet &amp; Floor Care</p>
         <div class="row">
@@ -210,7 +214,7 @@ h1, h2, h3, .head { font-family: var(--head); font-weight: 700; line-height: 1.1
     <div class="pad">
         <h2>We speak <span>English</span></h2>
         <div class="es"><h2>Hablamos <span>español</span></h2></div>
-        <p class="lead">Bilingual crew and supervisors for clinics, schools and homes across the Merrimack Valley.</p>
+        <p class="lead">Bilingual crew and supervisors for clinics, schools and homes across Massachusetts &amp; New Hampshire.</p>
     </div>
     <div class="brandbar"><img src="../../assets/img/logo-horizontal-white.svg" alt=""><b>978-328-2406</b></div>
 </div>
