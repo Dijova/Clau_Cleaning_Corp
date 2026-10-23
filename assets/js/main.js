@@ -258,6 +258,7 @@
                     notify('success', MSG.success);
                     form.reset();
                     markSent();
+                    document.dispatchEvent(new CustomEvent('quote_sent'));
                 } else {
                     notify('error', MSG.error);
                 }

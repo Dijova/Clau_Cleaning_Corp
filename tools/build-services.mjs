@@ -1,0 +1,332 @@
+// Generates one indexable page per service, in English (services/<slug>/) and
+// Spanish (es/services/<slug>/), from tools/services-data.mjs.
+// Run after editing the data:  node tools/build-services.mjs
+import { mkdirSync, writeFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { SITE, COMMON, CITIES, SERVICES } from './services-data.mjs';
+
+const root = join(dirname(fileURLToPath(import.meta.url)), '..');
+
+const NAV = {
+    en: { skip: 'Skip to content', menu: 'Open menu', about: 'About', services: 'Services', gallery: 'Our Work', clients: 'Clients', faq: 'FAQ', contact: 'Contact', quote: 'Free Quote',
+        tagline: 'Commercial cleaning, disinfection, house cleaning and floor care in Massachusetts and New Hampshire.',
+        footServices: 'Services', footLinks: 'Quick links', footContact: 'Contact', privacy: 'Privacy Policy', rights: 'All rights reserved.', call: 'Call +1 978-328-2406' },
+    es: { skip: 'Saltar al contenido', menu: 'Abrir menú', about: 'Nosotros', services: 'Servicios', gallery: 'Trabajos', clients: 'Clientes', faq: 'Preguntas', contact: 'Contacto', quote: 'Cotización Gratis',
+        tagline: 'Limpieza comercial, desinfección, limpieza de casas y cuidado de pisos en Massachusetts y New Hampshire.',
+        footServices: 'Servicios', footLinks: 'Enlaces rápidos', footContact: 'Contacto', privacy: 'Política de privacidad', rights: 'Todos los derechos reservados.', call: 'Llame al +1 978-328-2406' }
+};
+
+const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const url = (lang, slug) => `${SITE}${lang === 'es' ? '/es' : ''}/services/${slug}/`;
+
+const ICON = {
+    phone: 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z',
+    wa: 'M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z',
+    fb: 'M14 8h3V4h-3a4 4 0 0 0-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8z',
+    ig: 'M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM17.5 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z',
+    check: 'M9.5 16.2 5.3 12l-1.4 1.4 5.6 5.6L20.1 8.4 18.7 7z'
+};
+const svg = (d) => `<svg aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="${d}"/></svg>`;
+
+function structuredData(lang, svc) {
+    const t = svc[lang];
+    const c = COMMON[lang];
+    const homeUrl = `${SITE}${lang === 'es' ? '/es/' : '/'}`;
+    const areaServed = [
+        { '@type': 'State', name: 'Massachusetts' },
+        { '@type': 'State', name: 'New Hampshire' },
+        ...CITIES.MA.map((n) => ({ '@type': 'City', name: `${n}, MA` })),
+        ...CITIES.NH.map((n) => ({ '@type': 'City', name: `${n}, NH` }))
+    ];
+    return {
+        '@context': 'https://schema.org',
+        '@graph': [
+            {
+                '@type': 'Service',
+                '@id': `${url(lang, svc.slug)}#service`,
+                name: t.name,
+                serviceType: svc.serviceType,
+                description: t.metaDesc,
+                url: url(lang, svc.slug),
+                image: svc.image,
+                inLanguage: lang,
+                provider: { '@id': `${SITE}/#business` },
+                areaServed
+            },
+            {
+                '@type': 'BreadcrumbList',
+                itemListElement: [
+                    { '@type': 'ListItem', position: 1, name: c.home, item: homeUrl },
+                    { '@type': 'ListItem', position: 2, name: c.services, item: `${homeUrl}#services` },
+                    { '@type': 'ListItem', position: 3, name: t.name, item: url(lang, svc.slug) }
+                ]
+            },
+            {
+                '@type': 'FAQPage',
+                mainEntity: t.faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } }))
+            }
+        ]
+    };
+}
+
+function page(lang, svc) {
+    const t = svc[lang];
+    const c = COMMON[lang];
+    const n = NAV[lang];
+    const other = lang === 'en' ? 'es' : 'en';
+    const base = lang === 'en' ? '../../' : '../../../';     // site root (assets, privacy)
+    const home = '../../';                                   // home page in the same language
+    const otherLink = lang === 'en' ? `../../es/services/${svc.slug}/` : `../../../services/${svc.slug}/`;
+    const related = SERVICES.filter((s) => s.slug !== svc.slug);
+    const cities = [...CITIES.MA.map((x) => `${x}, MA`), ...CITIES.NH.map((x) => `${x}, NH`)];
+
+    return `<!DOCTYPE html>
+<html lang="${lang}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Generated by tools/build-services.mjs from tools/services-data.mjs. Edit the data there, not this file. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://images.pexels.com https://www.googletagmanager.com https://*.google-analytics.com; style-src 'self'; font-src 'self'; script-src 'self' https://www.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>${esc(t.metaTitle)}</title>
+    <meta name="description" content="${esc(t.metaDesc)}">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#0F3D25">
+    <link rel="canonical" href="${url(lang, svc.slug)}">
+    <link rel="alternate" hreflang="en" href="${url('en', svc.slug)}">
+    <link rel="alternate" hreflang="es" href="${url('es', svc.slug)}">
+    <link rel="alternate" hreflang="x-default" href="${url('en', svc.slug)}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Clau Cleaning Corp">
+    <meta property="og:url" content="${url(lang, svc.slug)}">
+    <meta property="og:title" content="${esc(t.metaTitle)}">
+    <meta property="og:description" content="${esc(t.metaDesc)}">
+    <meta property="og:image" content="${SITE}/assets/img/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="${esc(t.name)} – Clau Cleaning Corp">
+    <meta property="og:locale" content="${lang === 'en' ? 'en_US' : 'es_US'}">
+    <meta property="og:locale:alternate" content="${lang === 'en' ? 'es_US' : 'en_US'}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="${esc(t.metaTitle)}">
+    <meta name="twitter:description" content="${esc(t.metaDesc)}">
+    <meta name="twitter:image" content="${SITE}/assets/img/og-image.jpg">
+    <link rel="icon" href="${base}assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="${base}favicon.ico" sizes="32x32">
+    <link rel="apple-touch-icon" href="${base}assets/img/apple-touch-icon.png">
+    <link rel="manifest" href="${base}site.webmanifest">
+    <link rel="preconnect" href="https://images.pexels.com">
+    <link rel="preload" href="${base}assets/fonts/comfortaa-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="${base}assets/css/styles.css">
+    <script type="application/ld+json">
+${JSON.stringify(structuredData(lang, svc), null, 2)}
+    </script>
+    <script src="${base}assets/js/analytics.js" defer></script>
+    <script src="${base}assets/js/main.js" defer></script>
+</head>
+
+<body class="service-page">
+    <a class="skip-link" href="#main">${n.skip}</a>
+
+    <header class="site-header" id="top">
+        <div class="container header-inner">
+            <a class="brand" href="${home}" aria-label="Clau Cleaning Corp – ${c.home}">
+                <img src="${base}assets/img/logo-horizontal.svg" alt="Clau Cleaning Corp logo" width="320" height="42">
+            </a>
+            <button class="menu-toggle" id="menu-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="${n.menu}">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="site-nav" aria-label="Main">
+                <ul id="nav-menu">
+                    <li><a href="${home}#about">${n.about}</a></li>
+                    <li><a href="${home}#services">${n.services}</a></li>
+                    <li><a href="${home}#gallery">${n.gallery}</a></li>
+                    <li><a href="${home}#clients">${n.clients}</a></li>
+                    <li><a href="#faq">${n.faq}</a></li>
+                    <li><a href="${home}#contact">${n.contact}</a></li>
+                    <li class="lang-item">
+                        <div class="lang-switch" role="group" aria-label="Language / Idioma">
+                            ${lang === 'en'
+        ? `<a href="./" hreflang="en" lang="en" class="is-active" aria-current="true">EN</a>
+                            <a href="${otherLink}" hreflang="es" lang="es">ES</a>`
+        : `<a href="${otherLink}" hreflang="en" lang="en">EN</a>
+                            <a href="./" hreflang="es" lang="es" class="is-active" aria-current="true">ES</a>`}
+                        </div>
+                    </li>
+                    <li class="nav-cta-item"><a href="${home}#quote" class="btn btn-primary btn-sm">${n.quote}</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="svc-hero">
+            <img class="svc-hero-bg" src="${esc(svc.image)}" alt="" data-ph="hide" width="1200" height="800" fetchpriority="high">
+            <div class="container svc-hero-content">
+                <nav class="breadcrumb" aria-label="Breadcrumb"><a href="${home}">${c.home}</a> <span aria-hidden="true">›</span> <a href="${home}#services">${c.services}</a> <span aria-hidden="true">›</span> <span aria-current="page">${esc(t.name)}</span></nav>
+                <h1>${esc(t.h1)}</h1>
+                <p class="hero-lead">${esc(t.lead)}</p>
+                <div class="hero-actions">
+                    <a href="${home}#quote" class="btn btn-primary btn-lg">${c.quote}</a>
+                    <a href="tel:+19783282406" class="btn btn-ghost btn-lg">${svg(ICON.phone)}<span>+1 978-328-2406</span></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section svc-detail">
+            <div class="container svc-detail-grid">
+                <div>
+                    <p class="eyebrow">${esc(t.name)}</p>
+                    <h2>${c.included}</h2>
+                    <p class="svc-body">${esc(t.body)}</p>
+                    <ul class="check-list">
+                        ${t.included.map((x) => `<li>${esc(x)}</li>`).join('\n                        ')}
+                    </ul>
+                </div>
+                <figure class="svc-figure">
+                    <img src="${esc(svc.image.replace('w=1200', 'w=900'))}" alt="${esc(t.imageAlt)}" loading="lazy" width="900" height="600" data-ph="disinfection">
+                </figure>
+            </div>
+        </section>
+
+        <section class="section svc-ideal">
+            <div class="container">
+                <h2>${c.ideal}</h2>
+                <ul class="svc-ideal-grid">
+                    ${t.ideal.map((x) => `<li>${svg(ICON.check)}<span>${esc(x)}</span></li>`).join('\n                    ')}
+                </ul>
+            </div>
+        </section>
+
+        <section class="section process">
+            <div class="container">
+                <div class="section-head"><h2>${c.how}</h2></div>
+                <ol class="process-grid">
+                    ${c.steps.map(([h, p], i) => `<li><span class="step">${i + 1}</span><h3>${esc(h)}</h3><p>${esc(p)}</p></li>`).join('\n                    ')}
+                </ol>
+            </div>
+        </section>
+
+        <section id="faq" class="section faq">
+            <div class="container narrow">
+                <div class="section-head"><h2>${c.faq}</h2></div>
+                ${t.faq.map(([q, a]) => `<details>
+                    <summary>${esc(q)}</summary>
+                    <p>${esc(a)}</p>
+                </details>`).join('\n                ')}
+                <div class="svc-area">
+                    <h2>${c.areaTitle}</h2>
+                    <p>${c.areaText}</p>
+                    <ul class="area-list">
+                        ${cities.map((x) => `<li>${esc(x)}</li>`).join('')}
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="svc-band">
+            <div class="container svc-band-inner">
+                <div>
+                    <h2>${c.bandTitle}</h2>
+                    <p>${c.bandText}</p>
+                </div>
+                <div class="svc-band-actions">
+                    <a href="${home}#quote" class="btn btn-primary btn-lg">${c.quote}</a>
+                    <a href="https://wa.me/19783282406" class="btn btn-ghost btn-lg" target="_blank" rel="noopener noreferrer">${svg(ICON.wa)}<span>${c.whatsapp}</span></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section svc-related">
+            <div class="container">
+                <div class="section-head"><h2>${c.related}</h2></div>
+                <ul class="svc-related-grid">
+                    ${related.map((s) => `<li><a href="../${s.slug}/"><span>${esc(s[lang].name)}</span><small>${c.more}</small></a></li>`).join('\n                    ')}
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <img src="${base}assets/img/logo-white.svg" alt="Clau Cleaning Corp" width="200" height="110">
+                <p>${n.tagline}</p>
+                <div class="social">
+                    <a href="https://www.facebook.com/profile.php?id=100068568395875" target="_blank" rel="noopener noreferrer" aria-label="Clau Cleaning Corp on Facebook">${svg(ICON.fb)}</a>
+                    <a href="https://wa.me/19783282406" target="_blank" rel="noopener noreferrer" aria-label="Clau Cleaning Corp on WhatsApp">${svg(ICON.wa)}</a>
+                    <a href="https://www.instagram.com/claucleaningcorp/" target="_blank" rel="noopener noreferrer" aria-label="Clau Cleaning Corp on Instagram">${svg(ICON.ig)}</a>
+                </div>
+            </div>
+            <div>
+                <h3>${n.footServices}</h3>
+                <ul>
+                    ${SERVICES.map((s) => `<li><a href="../${s.slug}/">${esc(s[lang].name)}</a></li>`).join('\n                    ')}
+                </ul>
+            </div>
+            <div>
+                <h3>${n.footLinks}</h3>
+                <ul>
+                    <li><a href="${home}#about">${n.about}</a></li>
+                    <li><a href="${home}#gallery">${n.gallery}</a></li>
+                    <li><a href="${home}#quote">${n.quote}</a></li>
+                    <li><a href="${base}privacy.html">${n.privacy}</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>${n.footContact}</h3>
+                <address>
+                    <a href="tel:+19783282406">+1 978-328-2406</a><br>
+                    <a href="mailto:claucleaningcorpc2@gmail.com">claucleaningcorpc2@gmail.com</a><br>
+                    1734 Lakeview Ave #169<br>Dracut, MA 01826
+                </address>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; <span id="year">2026</span> Clau Cleaning Corp. ${n.rights}</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="tel:+19783282406" class="fab-call" aria-label="${n.call}">${svg(ICON.phone)}</a>
+</body>
+</html>
+`;
+}
+
+let count = 0;
+for (const svc of SERVICES) {
+    for (const lang of ['en', 'es']) {
+        const dir = join(root, lang === 'es' ? 'es' : '', 'services', svc.slug);
+        mkdirSync(dir, { recursive: true });
+        writeFileSync(join(dir, 'index.html'), page(lang, svc));
+        count++;
+    }
+}
+console.log(`${count} service pages written (services/ and es/services/)`);
+
+// sitemap.xml: home, service pages and privacy, each with its English/Spanish alternates.
+const today = new Date().toISOString().slice(0, 10);
+const entry = (en, es, priority) => [
+    [en, priority],
+    ...(es ? [[es, Math.max(0.5, priority - 0.1).toFixed(1)]] : [])
+].map(([loc, pr]) => `  <url>
+    <loc>${loc}</loc>${es ? `
+    <xhtml:link rel="alternate" hreflang="en" href="${en}"/>
+    <xhtml:link rel="alternate" hreflang="es" href="${es}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${en}"/>` : ''}
+    <lastmod>${today}</lastmod>
+    <priority>${pr}</priority>
+  </url>`).join('\n');
+
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${entry(`${SITE}/`, `${SITE}/es/`, 1.0)}
+${SERVICES.map((s) => entry(url('en', s.slug), url('es', s.slug), 0.9)).join('\n')}
+${entry(`${SITE}/privacy.html`, null, 0.3)}
+</urlset>
+`;
+writeFileSync(join(root, 'sitemap.xml'), sitemap);
+console.log('sitemap.xml written');

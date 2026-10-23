@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://images.pexels.com; style-src 'self'; font-src 'self'; script-src 'self'; connect-src 'self' https://script.google.com https://script.googleusercontent.com; frame-src https://www.google.com; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://images.pexels.com https://www.googletagmanager.com https://*.google-analytics.com; style-src 'self'; font-src 'self'; script-src 'self' https://www.googletagmanager.com; connect-src 'self' https://script.google.com https://script.googleusercontent.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src https://www.google.com; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
-    <title data-i18n="meta.title">Commercial Cleaning in Dracut, MA | Medical &amp; School Cleaning | Clau Cleaning Corp</title>
-    <meta name="description" data-i18n-attr="content:meta.description" content="Clau Cleaning Corp provides commercial cleaning and disinfection for medical clinics, doctor's offices and public &amp; private schools, plus house cleaning and carpet care in Dracut, Lowell and the Merrimack Valley, MA. Call +1 978-328-2406 for a free quote.">
+    <title data-i18n="meta.title">Commercial &amp; House Cleaning in MA &amp; NH | Clau Cleaning Corp</title>
+    <meta name="description" data-i18n-attr="content:meta.description" content="Cleaning and disinfection for clinics, doctor's offices and schools, plus house and carpet cleaning across Massachusetts and New Hampshire. Free quote.">
     <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="Clau Cleaning Corp">
     <link rel="canonical" href="https://claucleaningcorp.com/">
     <link rel="alternate" hreflang="en" href="https://claucleaningcorp.com/">
     <link rel="alternate" hreflang="es" href="https://claucleaningcorp.com/es/">
@@ -17,16 +18,23 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Clau Cleaning Corp">
     <meta property="og:locale" data-i18n-attr="content:meta.ogLocale" content="en_US">
-    <meta property="og:title" data-i18n-attr="content:meta.ogTitle" content="Clau Cleaning Corp | Commercial &amp; Medical Cleaning in Massachusetts">
-    <meta property="og:description" data-i18n-attr="content:meta.ogDescription" content="Healthcare-grade cleaning and disinfection for clinics, medical offices and schools in Massachusetts.">
+    <meta property="og:locale:alternate" data-i18n-attr="content:meta.ogLocaleAlt" content="es_US">
+    <meta property="og:title" data-i18n-attr="content:meta.ogTitle" content="Clau Cleaning Corp | Commercial &amp; House Cleaning in MA &amp; NH">
+    <meta property="og:description" data-i18n-attr="content:meta.ogDescription" content="Healthcare-grade cleaning and disinfection for clinics, medical offices and schools, plus house cleaning and carpet care across Massachusetts and New Hampshire.">
     <meta property="og:url" data-i18n-attr="content:meta.url" content="https://claucleaningcorp.com/">
     <meta property="og:image" content="https://claucleaningcorp.com/assets/img/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" data-i18n-attr="content:meta.ogImageAlt" content="Clau Cleaning Corp: cleaning and disinfection for clinics, schools and homes in MA and NH">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" data-i18n-attr="content:meta.ogTitle" content="Clau Cleaning Corp | Commercial &amp; House Cleaning in MA &amp; NH">
+    <meta name="twitter:description" data-i18n-attr="content:meta.ogDescription" content="Healthcare-grade cleaning and disinfection for clinics, medical offices and schools, plus house cleaning and carpet care across Massachusetts and New Hampshire.">
+    <meta name="twitter:image" content="https://claucleaningcorp.com/assets/img/og-image.jpg">
     <meta name="theme-color" content="#0F3D25">
 
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon.ico" sizes="32x32">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/icon-192.png">
     <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
 
@@ -40,9 +48,9 @@
         "@type": ["LocalBusiness", "ProfessionalService"],
         "@id": "https://claucleaningcorp.com/#business",
         "name": "Clau Cleaning Corp",
-        "description": "Cleaning company in Massachusetts specializing in the disinfection of medical clinics, doctor's offices and public and private schools, plus house cleaning, carpet cleaning and floor care.",
+        "description": "Cleaning company based in Dracut, MA, serving all of Massachusetts and New Hampshire. Specialized in the cleaning and disinfection of medical clinics, doctor's offices and public and private schools, plus office cleaning, house cleaning, carpet cleaning and floor care.",
         "url": "https://claucleaningcorp.com/",
-        "logo": "https://claucleaningcorp.com/assets/img/logo.svg",
+        "logo": "https://claucleaningcorp.com/assets/img/icon-512.png",
         "image": "https://claucleaningcorp.com/assets/img/og-image.jpg",
         "telephone": "+1-978-328-2406",
         "email": "claucleaningcorpc2@gmail.com",
@@ -56,7 +64,33 @@
             "addressCountry": "US"
         },
         "geo": { "@type": "GeoCoordinates", "latitude": 42.6787, "longitude": -71.3242 },
-        "areaServed": ["Dracut, MA", "Lowell, MA", "Methuen, MA", "Lawrence, MA", "Tewksbury, MA", "Chelmsford, MA", "Andover, MA", "Billerica, MA", "Tyngsborough, MA", "Merrimack Valley, MA"],
+        "areaServed": [
+            { "@type": "State", "name": "Massachusetts" },
+            { "@type": "State", "name": "New Hampshire" },
+            { "@type": "City", "name": "Boston, MA" },
+            { "@type": "City", "name": "Worcester, MA" },
+            { "@type": "City", "name": "Springfield, MA" },
+            { "@type": "City", "name": "Lowell, MA" },
+            { "@type": "City", "name": "Cambridge, MA" },
+            { "@type": "City", "name": "Lawrence, MA" },
+            { "@type": "City", "name": "Dracut, MA" },
+            { "@type": "City", "name": "Methuen, MA" },
+            { "@type": "City", "name": "Andover, MA" },
+            { "@type": "City", "name": "Chelmsford, MA" },
+            { "@type": "City", "name": "Tewksbury, MA" },
+            { "@type": "City", "name": "Billerica, MA" },
+            { "@type": "City", "name": "Haverhill, MA" },
+            { "@type": "City", "name": "Woburn, MA" },
+            { "@type": "City", "name": "Manchester, NH" },
+            { "@type": "City", "name": "Nashua, NH" },
+            { "@type": "City", "name": "Concord, NH" },
+            { "@type": "City", "name": "Salem, NH" },
+            { "@type": "City", "name": "Derry, NH" },
+            { "@type": "City", "name": "Hudson, NH" },
+            { "@type": "City", "name": "Londonderry, NH" },
+            { "@type": "City", "name": "Pelham, NH" }
+        ],
+        "hasMap": "https://www.google.com/maps/search/?api=1&query=1734+Lakeview+Ave+Dracut+MA+01826",
         "knowsLanguage": ["en", "es"],
         "sameAs": [
             "https://www.facebook.com/profile.php?id=100068568395875",
@@ -64,21 +98,22 @@
         ],
         "hasOfferCatalog": {
             "@type": "OfferCatalog",
-            "name": "Commercial cleaning services",
+            "name": "Cleaning services",
             "itemListElement": [
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Medical facility cleaning and disinfection" } },
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "School cleaning (public and private)" } },
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Commercial office cleaning" } },
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "House cleaning" } },
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Carpet cleaning and floor care" } },
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Deep cleaning" } },
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Critical surface disinfection" } },
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Institutional maintenance contracts" } }
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Medical office and clinic cleaning", "url": "https://claucleaningcorp.com/services/medical-office-cleaning/" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "School cleaning", "url": "https://claucleaningcorp.com/services/school-cleaning/" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Commercial office cleaning", "url": "https://claucleaningcorp.com/services/office-cleaning/" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "House cleaning", "url": "https://claucleaningcorp.com/services/house-cleaning/" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Carpet cleaning and floor care", "url": "https://claucleaningcorp.com/services/carpet-cleaning-floor-care/" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Critical surface disinfection", "url": "https://claucleaningcorp.com/services/disinfection-services/" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Deep cleaning", "url": "https://claucleaningcorp.com/services/deep-cleaning/" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Janitorial maintenance contracts", "url": "https://claucleaningcorp.com/services/janitorial-maintenance-contracts/" } }
             ]
         }
     }
     </script>
 
+    <script src="assets/js/analytics.js" defer></script>
     <script src="assets/js/main.js" defer></script>
 </head>
 
@@ -122,7 +157,7 @@
                  srcset="https://images.pexels.com/photos/5511093/pexels-photo-5511093.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800 800w, https://images.pexels.com/photos/5511093/pexels-photo-5511093.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600 1600w"
                  sizes="100vw" alt="" fetchpriority="high" data-ph="hide" width="1600" height="1067">
             <div class="container hero-content">
-                <p class="eyebrow" data-i18n="hero.eyebrow">Commercial Cleaning · Dracut, Massachusetts</p>
+                <p class="eyebrow" data-i18n="hero.eyebrow">Commercial &amp; House Cleaning · Massachusetts &amp; New Hampshire</p>
                 <h1 id="hero-title" data-i18n-html="hero.title">Healthcare-grade cleaning for <span class="hl">clinics, medical offices &amp; schools</span></h1>
                 <p class="hero-lead" data-i18n="hero.lead">We disinfect and maintain the spaces where patients heal and students learn — with protocols that prevent cross-contamination and a team you can trust after hours.</p>
                 <div class="hero-actions">
@@ -143,7 +178,7 @@
         <!-- TRUST BAR -->
         <section class="trust-bar" aria-label="Highlights">
             <div class="container"><div class="trust-grid">
-                <div class="trust-item"><strong>20+</strong><span data-i18n="trust.years">Years serving Massachusetts</span></div>
+                <div class="trust-item"><strong>20+</strong><span data-i18n="trust.years">Years serving MA &amp; NH</span></div>
                 <div class="trust-item"><strong data-i18n="trust.medicalValue">Medical</strong><span data-i18n="trust.medical">Clinics &amp; doctor's offices</span></div>
                 <div class="trust-item"><strong data-i18n="trust.schoolsValue">K-12</strong><span data-i18n="trust.schools">Public &amp; private schools</span></div>
                 <div class="trust-item"><strong data-i18n="trust.homesValue">Homes</strong><span data-i18n="trust.homes">House cleaning &amp; carpet care</span></div>
@@ -186,97 +221,105 @@
                     <article class="service-card">
                         <img src="https://images.pexels.com/photos/16571732/pexels-photo-16571732.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=700" alt="Clean, disinfected doctor's office examination room" loading="lazy" width="700" height="467" data-i18n-attr="alt:services.s1.alt" data-ph="medical">
                         <div class="service-body">
-                            <h3 data-i18n="services.s1.title">Medical Facility Cleaning</h3>
+                            <h3><a href="services/medical-office-cleaning/" data-same-lang data-i18n="services.s1.title">Medical Facility Cleaning</a></h3>
                             <p data-i18n="services.s1.text">Clinics, doctor's and dental offices, exam rooms and waiting areas cleaned to healthcare hygiene standards.</p>
                             <ul>
                                 <li data-i18n="services.s1.li1">Exam &amp; treatment room disinfection</li>
                                 <li data-i18n="services.s1.li2">Waiting rooms &amp; restrooms</li>
                                 <li data-i18n="services.s1.li3">Proper handling of regular waste</li>
                             </ul>
+                            <a class="service-more" href="services/medical-office-cleaning/" data-same-lang data-i18n="services.more">Learn more →</a>
                         </div>
                     </article>
                     <article class="service-card">
                         <img src="https://images.pexels.com/photos/29932839/pexels-photo-29932839.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=700" alt="Clean empty school classroom with desks" loading="lazy" width="700" height="467" data-i18n-attr="alt:services.s2.alt" data-ph="schools">
                         <div class="service-body">
-                            <h3 data-i18n="services.s2.title">School Cleaning</h3>
+                            <h3><a href="services/school-cleaning/" data-same-lang data-i18n="services.s2.title">School Cleaning</a></h3>
                             <p data-i18n="services.s2.text">Healthy classrooms for public and private schools, scheduled around the school day.</p>
                             <ul>
                                 <li data-i18n="services.s2.li1">Classrooms, hallways &amp; cafeterias</li>
                                 <li data-i18n="services.s2.li2">Desk &amp; high-touch point sanitizing</li>
                                 <li data-i18n="services.s2.li3">Gyms, locker rooms &amp; restrooms</li>
                             </ul>
+                            <a class="service-more" href="services/school-cleaning/" data-same-lang data-i18n="services.more">Learn more →</a>
                         </div>
                     </article>
                     <article class="service-card">
                         <img src="https://images.pexels.com/photos/6794929/pexels-photo-6794929.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=700" alt="Clean modern office corridor" loading="lazy" width="700" height="467" data-i18n-attr="alt:services.s3.alt" data-ph="offices">
                         <div class="service-body">
-                            <h3 data-i18n="services.s3.title">Commercial Office Cleaning</h3>
+                            <h3><a href="services/office-cleaning/" data-same-lang data-i18n="services.s3.title">Commercial Office Cleaning</a></h3>
                             <p data-i18n="services.s3.text">Daily, weekly or custom janitorial service for offices and professional buildings.</p>
                             <ul>
                                 <li data-i18n="services.s3.li1">Workstations &amp; common areas</li>
                                 <li data-i18n="services.s3.li2">Kitchens, breakrooms &amp; restrooms</li>
                                 <li data-i18n="services.s3.li3">Trash &amp; recycling removal</li>
                             </ul>
+                            <a class="service-more" href="services/office-cleaning/" data-same-lang data-i18n="services.more">Learn more →</a>
                         </div>
                     </article>
                     <article class="service-card">
                         <img src="https://images.pexels.com/photos/6195198/pexels-photo-6195198.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=700" alt="Professional house cleaning in a bright living room" loading="lazy" width="700" height="467" data-i18n-attr="alt:services.s7.alt" data-ph="homes">
                         <div class="service-body">
-                            <h3 data-i18n="services.s7.title">House Cleaning</h3>
+                            <h3><a href="services/house-cleaning/" data-same-lang data-i18n="services.s7.title">House Cleaning</a></h3>
                             <p data-i18n="services.s7.text">Recurring or one-time cleaning that leaves your home fresh, healthy and ready to enjoy.</p>
                             <ul>
                                 <li data-i18n="services.s7.li1">Weekly, bi-weekly or monthly visits</li>
                                 <li data-i18n="services.s7.li2">Kitchens, bathrooms &amp; bedrooms</li>
                                 <li data-i18n="services.s7.li3">Move-in / move-out cleaning</li>
                             </ul>
+                            <a class="service-more" href="services/house-cleaning/" data-same-lang data-i18n="services.more">Learn more →</a>
                         </div>
                     </article>
                     <article class="service-card">
                         <img src="https://images.pexels.com/photos/4107275/pexels-photo-4107275.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=700" alt="Professional carpet vacuuming and floor care" loading="lazy" width="700" height="467" data-i18n-attr="alt:services.s8.alt" data-ph="homes">
                         <div class="service-body">
-                            <h3 data-i18n="services.s8.title">Carpet Cleaning &amp; Floor Care</h3>
+                            <h3><a href="services/carpet-cleaning-floor-care/" data-same-lang data-i18n="services.s8.title">Carpet Cleaning &amp; Floor Care</a></h3>
                             <p data-i18n="services.s8.text">Deep carpet cleaning and hard-floor care for homes, offices, clinics and schools.</p>
                             <ul>
                                 <li data-i18n="services.s8.li1">Carpet &amp; rug deep cleaning</li>
                                 <li data-i18n="services.s8.li2">Stripping, waxing &amp; buffing</li>
                                 <li data-i18n="services.s8.li3">Tile &amp; hard-floor maintenance</li>
                             </ul>
+                            <a class="service-more" href="services/carpet-cleaning-floor-care/" data-same-lang data-i18n="services.more">Learn more →</a>
                         </div>
                     </article>
                     <article class="service-card">
                         <img src="https://images.pexels.com/photos/4021256/pexels-photo-4021256.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=700" alt="Gloved hands disinfecting a critical surface" loading="lazy" width="700" height="467" data-i18n-attr="alt:services.s4.alt" data-ph="disinfection">
                         <div class="service-body">
-                            <h3 data-i18n="services.s4.title">Critical Surface Disinfection</h3>
+                            <h3><a href="services/disinfection-services/" data-same-lang data-i18n="services.s4.title">Critical Surface Disinfection</a></h3>
                             <p data-i18n="services.s4.text">Targeted disinfection of high-touch surfaces to prevent cross-contamination.</p>
                             <ul>
                                 <li data-i18n="services.s4.li1">Door handles, rails &amp; switches</li>
                                 <li data-i18n="services.s4.li2">Color-coded cloths by zone</li>
                                 <li data-i18n="services.s4.li3">Correct disinfectant dwell times</li>
                             </ul>
+                            <a class="service-more" href="services/disinfection-services/" data-same-lang data-i18n="services.more">Learn more →</a>
                         </div>
                     </article>
                     <article class="service-card">
                         <img src="https://images.pexels.com/photos/6197106/pexels-photo-6197106.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=700" alt="Professional deep cleaning of a tiled floor" loading="lazy" width="700" height="467" data-i18n-attr="alt:services.s5.alt" data-ph="disinfection">
                         <div class="service-body">
-                            <h3 data-i18n="services.s5.title">Deep Cleaning</h3>
+                            <h3><a href="services/deep-cleaning/" data-same-lang data-i18n="services.s5.title">Deep Cleaning</a></h3>
                             <p data-i18n="services.s5.text">Top-to-bottom cleaning for seasonal resets, move-ins, move-outs and special events.</p>
                             <ul>
                                 <li data-i18n="services.s5.li1">Floors, baseboards &amp; vents</li>
                                 <li data-i18n="services.s5.li2">Restroom descaling</li>
                                 <li data-i18n="services.s5.li3">Post-renovation cleanup</li>
                             </ul>
+                            <a class="service-more" href="services/deep-cleaning/" data-same-lang data-i18n="services.more">Learn more →</a>
                         </div>
                     </article>
                     <article class="service-card">
                         <img src="https://images.pexels.com/photos/4440533/pexels-photo-4440533.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=700" alt="Professional cleaning products prepared for a maintenance visit" loading="lazy" width="700" height="467" data-i18n-attr="alt:services.s6.alt" data-ph="offices">
                         <div class="service-body">
-                            <h3 data-i18n="services.s6.title">Maintenance Contracts</h3>
+                            <h3><a href="services/janitorial-maintenance-contracts/" data-same-lang data-i18n="services.s6.title">Maintenance Contracts</a></h3>
                             <p data-i18n="services.s6.text">Reliable recurring programs for institutions, with a dedicated crew and quality checks.</p>
                             <ul>
                                 <li data-i18n="services.s6.li1">Daily, weekly or monthly plans</li>
                                 <li data-i18n="services.s6.li2">Supplies &amp; restocking available</li>
                                 <li data-i18n="services.s6.li3">Scheduled quality inspections</li>
                             </ul>
+                            <a class="service-more" href="services/janitorial-maintenance-contracts/" data-same-lang data-i18n="services.more">Learn more →</a>
                         </div>
                     </article>
                 </div>
@@ -384,9 +427,9 @@
                 </div>
                 <aside class="area-card" aria-labelledby="area-title">
                     <h3 id="area-title" data-i18n="area.title">Service area</h3>
-                    <p data-i18n="area.text">Proudly serving the Merrimack Valley and Greater Lowell, Massachusetts:</p>
+                    <p data-i18n="area.text">Based in Dracut, MA and serving all of Massachusetts and New Hampshire, including:</p>
                     <ul class="area-list">
-                        <li>Dracut</li><li>Lowell</li><li>Methuen</li><li>Lawrence</li><li>Tewksbury</li><li>Chelmsford</li><li>Andover</li><li>Billerica</li><li>Tyngsborough</li><li>Pelham, NH</li>
+                        <li>Boston, MA</li><li>Worcester, MA</li><li>Lowell, MA</li><li>Lawrence, MA</li><li>Dracut, MA</li><li>Methuen, MA</li><li>Manchester, NH</li><li>Nashua, NH</li><li>Concord, NH</li><li>Salem, NH</li>
                     </ul>
                     <a href="tel:+19783282406" class="btn btn-primary btn-block" data-i18n="area.cta">Call +1 978-328-2406</a>
                 </aside>
@@ -409,8 +452,8 @@
                     <p data-i18n="faq.a2">Yes. We provide daily and periodic cleaning for public and private schools, scheduled after hours or on weekends so classes are never interrupted.</p>
                 </details>
                 <details>
-                    <summary data-i18n="faq.q3">What areas of Massachusetts do you serve?</summary>
-                    <p data-i18n="faq.a3">We are based in Dracut, MA and serve Lowell, Methuen, Lawrence, Tewksbury, Chelmsford, Andover, Billerica, Tyngsborough and the rest of the Merrimack Valley.</p>
+                    <summary data-i18n="faq.q3">What areas do you serve?</summary>
+                    <p data-i18n="faq.a3">We are based in Dracut, MA and serve all of Massachusetts and New Hampshire, including Boston, Worcester, Lowell, Lawrence, Manchester, Nashua, Concord and Salem.</p>
                 </details>
                 <details>
                     <summary data-i18n="faq.q4">How do I get a quote?</summary>
@@ -501,7 +544,7 @@
         <div class="container footer-grid">
             <div class="footer-brand">
                 <img src="assets/img/logo-white.svg" alt="Clau Cleaning Corp" width="200" height="110">
-                <p data-i18n="footer.tagline">Commercial cleaning, disinfection, house cleaning and floor care in Massachusetts.</p>
+                <p data-i18n="footer.tagline">Commercial cleaning, disinfection, house cleaning and floor care in Massachusetts and New Hampshire.</p>
                 <div class="social">
                     <a href="https://www.facebook.com/profile.php?id=100068568395875" target="_blank" rel="noopener noreferrer" aria-label="Clau Cleaning Corp on Facebook">
                         <svg aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8z"/></svg>
@@ -517,11 +560,14 @@
             <div>
                 <h3 data-i18n="footer.services">Services</h3>
                 <ul>
-                    <li><a href="#services" data-i18n="services.s1.title">Medical Facility Cleaning</a></li>
-                    <li><a href="#services" data-i18n="services.s2.title">School Cleaning</a></li>
-                    <li><a href="#services" data-i18n="services.s3.title">Commercial Office Cleaning</a></li>
-                    <li><a href="#services" data-i18n="services.s7.title">House Cleaning</a></li>
-                    <li><a href="#services" data-i18n="services.s8.title">Carpet Cleaning &amp; Floor Care</a></li>
+                    <li><a href="services/medical-office-cleaning/" data-same-lang data-i18n="services.s1.title">Medical Facility Cleaning</a></li>
+                    <li><a href="services/school-cleaning/" data-same-lang data-i18n="services.s2.title">School Cleaning</a></li>
+                    <li><a href="services/office-cleaning/" data-same-lang data-i18n="services.s3.title">Commercial Office Cleaning</a></li>
+                    <li><a href="services/house-cleaning/" data-same-lang data-i18n="services.s7.title">House Cleaning</a></li>
+                    <li><a href="services/carpet-cleaning-floor-care/" data-same-lang data-i18n="services.s8.title">Carpet Cleaning &amp; Floor Care</a></li>
+                    <li><a href="services/disinfection-services/" data-same-lang data-i18n="services.s4.title">Critical Surface Disinfection</a></li>
+                    <li><a href="services/deep-cleaning/" data-same-lang data-i18n="services.s5.title">Deep Cleaning</a></li>
+                    <li><a href="services/janitorial-maintenance-contracts/" data-same-lang data-i18n="services.s6.title">Maintenance Contracts</a></li>
                 </ul>
             </div>
             <div>

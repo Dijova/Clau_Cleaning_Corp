@@ -3,5 +3,6 @@ Allow: /
 Disallow: /backend/
 Disallow: /tools/
 Disallow: /mockup/
+Disallow: /social/
 
 Sitemap: https://claucleaningcorp.com/sitemap.xml

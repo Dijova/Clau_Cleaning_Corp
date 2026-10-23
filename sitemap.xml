@@ -4,19 +4,149 @@
     <loc>https://claucleaningcorp.com/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://claucleaningcorp.com/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://claucleaningcorp.com/es/"/>
-    <lastmod>2026-10-05</lastmod>
-    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://claucleaningcorp.com/"/>
+    <lastmod>2026-10-23</lastmod>
+    <priority>1</priority>
   </url>
   <url>
     <loc>https://claucleaningcorp.com/es/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://claucleaningcorp.com/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://claucleaningcorp.com/es/"/>
-    <lastmod>2026-10-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://claucleaningcorp.com/"/>
+    <lastmod>2026-10-23</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://claucleaningcorp.com/services/medical-office-cleaning/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://claucleaningcorp.com/services/medical-office-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://claucleaningcorp.com/es/services/medical-office-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://claucleaningcorp.com/services/medical-office-cleaning/"/>
+    <lastmod>2026-10-23</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://claucleaningcorp.com/es/services/medical-office-cleaning/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://claucleaningcorp.com/services/medical-office-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://claucleaningcorp.com/es/services/medical-office-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://claucleaningcorp.com/services/medical-office-cleaning/"/>
+    <lastmod>2026-10-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://claucleaningcorp.com/services/school-cleaning/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://claucleaningcorp.com/services/school-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://claucleaningcorp.com/es/services/school-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://claucleaningcorp.com/services/school-cleaning/"/>
+    <lastmod>2026-10-23</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://claucleaningcorp.com/es/services/school-cleaning/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://claucleaningcorp.com/services/school-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://claucleaningcorp.com/es/services/school-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://claucleaningcorp.com/services/school-cleaning/"/>
+    <lastmod>2026-10-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://claucleaningcorp.com/services/office-cleaning/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://claucleaningcorp.com/services/office-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://claucleaningcorp.com/es/services/office-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://claucleaningcorp.com/services/office-cleaning/"/>
+    <lastmod>2026-10-23</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://claucleaningcorp.com/es/services/office-cleaning/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://claucleaningcorp.com/services/office-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://claucleaningcorp.com/es/services/office-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://claucleaningcorp.com/services/office-cleaning/"/>
+    <lastmod>2026-10-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://claucleaningcorp.com/services/house-cleaning/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://claucleaningcorp.com/services/house-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://claucleaningcorp.com/es/services/house-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://claucleaningcorp.com/services/house-cleaning/"/>
+    <lastmod>2026-10-23</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://claucleaningcorp.com/es/services/house-cleaning/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://claucleaningcorp.com/services/house-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://claucleaningcorp.com/es/services/house-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://claucleaningcorp.com/services/house-cleaning/"/>
+    <lastmod>2026-10-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://claucleaningcorp.com/services/carpet-cleaning-floor-care/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://claucleaningcorp.com/services/carpet-cleaning-floor-care/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://claucleaningcorp.com/es/services/carpet-cleaning-floor-care/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://claucleaningcorp.com/services/carpet-cleaning-floor-care/"/>
+    <lastmod>2026-10-23</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://claucleaningcorp.com/es/services/carpet-cleaning-floor-care/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://claucleaningcorp.com/services/carpet-cleaning-floor-care/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://claucleaningcorp.com/es/services/carpet-cleaning-floor-care/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://claucleaningcorp.com/services/carpet-cleaning-floor-care/"/>
+    <lastmod>2026-10-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://claucleaningcorp.com/services/disinfection-services/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://claucleaningcorp.com/services/disinfection-services/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://claucleaningcorp.com/es/services/disinfection-services/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://claucleaningcorp.com/services/disinfection-services/"/>
+    <lastmod>2026-10-23</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://claucleaningcorp.com/es/services/disinfection-services/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://claucleaningcorp.com/services/disinfection-services/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://claucleaningcorp.com/es/services/disinfection-services/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://claucleaningcorp.com/services/disinfection-services/"/>
+    <lastmod>2026-10-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://claucleaningcorp.com/services/deep-cleaning/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://claucleaningcorp.com/services/deep-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://claucleaningcorp.com/es/services/deep-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://claucleaningcorp.com/services/deep-cleaning/"/>
+    <lastmod>2026-10-23</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://claucleaningcorp.com/es/services/deep-cleaning/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://claucleaningcorp.com/services/deep-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://claucleaningcorp.com/es/services/deep-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://claucleaningcorp.com/services/deep-cleaning/"/>
+    <lastmod>2026-10-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://claucleaningcorp.com/services/janitorial-maintenance-contracts/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://claucleaningcorp.com/services/janitorial-maintenance-contracts/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://claucleaningcorp.com/es/services/janitorial-maintenance-contracts/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://claucleaningcorp.com/services/janitorial-maintenance-contracts/"/>
+    <lastmod>2026-10-23</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://claucleaningcorp.com/es/services/janitorial-maintenance-contracts/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://claucleaningcorp.com/services/janitorial-maintenance-contracts/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://claucleaningcorp.com/es/services/janitorial-maintenance-contracts/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://claucleaningcorp.com/services/janitorial-maintenance-contracts/"/>
+    <lastmod>2026-10-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://claucleaningcorp.com/privacy.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <priority>0.3</priority>
   </url>
 </urlset>

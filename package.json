@@ -4,7 +4,9 @@
   "description": "Clau Cleaning Corp website",
   "type": "module",
   "scripts": {
-    "build": "node tools/build-es.mjs",
+    "build": "node tools/build-services.mjs && node tools/build-es.mjs",
+    "build:es": "node tools/build-es.mjs",
+    "build:services": "node tools/build-services.mjs",
     "serve": "npx --yes http-server -p 8080 -c-1 ."
   },
   "devDependencies": {
