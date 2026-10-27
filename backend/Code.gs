@@ -16,7 +16,7 @@
 
 var CONFIG = {
   SHEET_NAME: 'Quote Requests',
-  NOTIFY_EMAIL: 'claucleaningcorpc2@gmail.com',
+  NOTIFY_EMAIL: 'claucleaningcorpc1@gmail.com',
   // Leave empty to accept any origin, or list the live site origins, e.g. ['https://claucleaningcorp.com'].
   ALLOWED_PAGES: [],
   MIN_FILL_MS: 3000,
