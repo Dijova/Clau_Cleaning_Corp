@@ -4,7 +4,7 @@
 
     // Google Apps Script web-app URL that stores quote requests (see backend/README.md).
     // Only this exact origin is allowed by the Content-Security-Policy in index.html.
-    var FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx8g6Z2IuGUJQ95qF4XcntJbCpndlmUc4gHyjm2NvzvnVpHcWrdZGATAZu9LOwiKX_Bxw/exec';
+    var FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwO88ynh5qU2emdMKq_7Z8A774p_hpqAlCIshGoR2wSRLgZd1N4Yzn36YoZ4xu0vfvm/exec';
 
     var lang = document.documentElement.lang === 'es' ? 'es' : 'en';
     var MSG = {
