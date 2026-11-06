@@ -4,6 +4,7 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as cheerio from 'cheerio';
+import { fill } from './home-blocks.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const dict = JSON.parse(readFileSync(join(root, 'tools/es.json'), 'utf8'));
@@ -48,7 +49,8 @@ $('.lang-switch a').removeClass('is-active').removeAttr('aria-current');
 $('.lang-switch a[hreflang="es"]').addClass('is-active').attr('aria-current', 'true');
 
 mkdirSync(join(root, 'es'), { recursive: true });
-writeFileSync(join(root, 'es/index.html'), $.html());
+// Data-driven parts (services, clients, cities) in Spanish, with paths for the /es/ folder.
+writeFileSync(join(root, 'es/index.html'), fill($.html(), 'es', '../'));
 
 if (missing.size) {
     console.warn('Missing Spanish keys:', [...missing].join(', '));

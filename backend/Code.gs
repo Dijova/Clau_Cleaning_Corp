@@ -22,7 +22,7 @@ var CONFIG = {
   MIN_FILL_MS: 3000,
   PER_EMAIL_WINDOW_S: 600,   // 1 request per email every 10 minutes
   GLOBAL_LIMIT: 30,          // max requests per hour for the whole form
-  SERVICES: ['medical', 'school', 'office', 'house', 'carpet', 'disinfection', 'deep', 'contract', 'other']
+  SERVICES: ['commercial', 'medical', 'carpet', 'floor', 'laboratory', 'office', 'dealership', 'church', 'school', 'disinfection', 'deep', 'contract', 'other']
 };
 
 var HEADERS = ['Timestamp', 'Name', 'Email', 'Phone', 'Service', 'Message', 'Language', 'Consent', 'Page'];

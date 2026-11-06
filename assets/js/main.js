@@ -117,7 +117,7 @@
     var lbImg = document.getElementById('lb-img');
     var lbCap = document.getElementById('lb-cap');
     var current = 0;
-    function visibleItems() { return Array.prototype.filter.call(grid.querySelectorAll('li'), function (li) { return !li.hidden; }); }
+    function visibleItems() { return Array.prototype.filter.call(grid.querySelectorAll('li'), function (li) { return !li.hidden && li.querySelector('.gallery-item'); }); }
     function show(i) {
         var items = visibleItems();
         if (!items.length) return;
