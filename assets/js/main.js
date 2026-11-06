@@ -12,7 +12,7 @@
             sending: 'Sending…',
             success: 'Thank you! Your request was received. We will contact you within one business day.',
             error: 'We could not send your request. Please try again or call +1 978-328-2406.',
-            notConfigured: 'The online form is being set up. Please call +1 978-328-2406 or email claucleaningcorpc2@gmail.com.',
+            notConfigured: 'The online form is being set up. Please call +1 978-328-2406 or email claucleaningcorpc1@gmail.com.',
             tooFast: 'Please wait a moment before sending another request.',
             required: 'This field is required.',
             email: 'Please enter a valid email address.',
@@ -24,7 +24,7 @@
             sending: 'Enviando…',
             success: '¡Gracias! Recibimos su solicitud. Le contactaremos en menos de un día hábil.',
             error: 'No pudimos enviar su solicitud. Inténtelo de nuevo o llame al +1 978-328-2406.',
-            notConfigured: 'El formulario en línea se está configurando. Llame al +1 978-328-2406 o escriba a claucleaningcorpc2@gmail.com.',
+            notConfigured: 'El formulario en línea se está configurando. Llame al +1 978-328-2406 o escriba a claucleaningcorpc1@gmail.com.',
             tooFast: 'Por favor espere un momento antes de enviar otra solicitud.',
             required: 'Este campo es obligatorio.',
             email: 'Ingrese un correo electrónico válido.',
@@ -292,5 +292,18 @@
             })
             .catch(function () { notify('error', MSG.error); })
             .finally(function () { btn.disabled = false; btn.textContent = label; });
+    });
+})();
+
+/* ---------- Floating contact button (call / SMS) ---------- */
+(function () {
+    'use strict';
+    var fab = document.querySelector('[data-fab]');
+    if (!fab) return;
+    document.addEventListener('click', function (e) {
+        if (fab.open && !fab.contains(e.target)) fab.open = false;
+    });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && fab.open) { fab.open = false; fab.querySelector('summary').focus(); }
     });
 })();
