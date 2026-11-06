@@ -2,6 +2,11 @@
 // clients, service areas). The home page (index.html) has the same markup by hand.
 import { SITE, SERVICES } from './services-data.mjs';
 import { CITY_LIST, citySlug } from './locations-data.mjs';
+import { existsSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const SITE_ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
 export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -43,6 +48,9 @@ export function layout({ lang, path, title, desc, jsonld, body, active = '', bod
     const esHref = '../'.repeat(depth) + 'es/' + path;
     const cur = (k) => (k === active ? ' aria-current="page"' : '');
     const url = abs(lang, path);
+    const main = body({ root, home });
+    // Only pages that still show a Pexels photo need the early connection to Pexels.
+    const preconnect = main.includes('images.pexels.com') ? '\n    <link rel="preconnect" href="https://images.pexels.com">' : '';
 
     return `<!DOCTYPE html>
 <html lang="${lang}">
@@ -66,6 +74,8 @@ export function layout({ lang, path, title, desc, jsonld, body, active = '', bod
     <meta property="og:title" content="${esc(title)}">
     <meta property="og:description" content="${esc(desc)}">
     <meta property="og:image" content="${esc(image)}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="${esc(imageAlt)}">
     <meta property="og:locale" content="${lang === 'en' ? 'en_US' : 'es_US'}">
     <meta property="og:locale:alternate" content="${lang === 'en' ? 'es_US' : 'en_US'}">
@@ -76,8 +86,7 @@ export function layout({ lang, path, title, desc, jsonld, body, active = '', bod
     <link rel="icon" href="${root}assets/img/favicon.svg" type="image/svg+xml">
     <link rel="icon" href="${root}favicon.ico" sizes="32x32">
     <link rel="apple-touch-icon" href="${root}assets/img/apple-touch-icon.png">
-    <link rel="manifest" href="${root}site.webmanifest">
-    <link rel="preconnect" href="https://images.pexels.com">
+    <link rel="manifest" href="${root}site.webmanifest">${preconnect}
     <link rel="preload" href="${root}assets/fonts/comfortaa-var-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="${root}assets/css/styles.css">
     <script type="application/ld+json">
@@ -119,7 +128,7 @@ ${JSON.stringify(jsonld, null, 2)}
     </header>
 
     <main id="main">
-${body({ root, home })}
+${main}
     </main>
 
 ${footer(lang, root, home)}
@@ -180,8 +189,32 @@ export function footer(lang, root, home) {
     <a href="tel:+19783282406" class="fab-call" aria-label="${n.call}">${svg(ICON.phone)}</a>`;
 }
 
-// LocalBusiness reference used as provider in every page's structured data.
+// LocalBusiness used as provider in every page's structured data. Google does not join
+// @id references across pages, so each page carries the business name, phone and address
+// itself (the full profile, with services and service area, is on the home page).
 export const BUSINESS_ID = `${SITE}/#business`;
+export const BUSINESS = {
+    '@type': ['LocalBusiness', 'ProfessionalService'],
+    '@id': BUSINESS_ID,
+    name: 'Clau Cleaning Corp',
+    url: `${SITE}/`,
+    logo: `${SITE}/assets/img/icon-512.png`,
+    image: `${SITE}/assets/img/og-image.jpg`,
+    telephone: '+1-978-328-2406',
+    email: 'claucleaningcorpc2@gmail.com',
+    priceRange: '$$',
+    address: { '@type': 'PostalAddress', streetAddress: '1734 Lakeview Ave #169', addressLocality: 'Dracut', addressRegion: 'MA', postalCode: '01826', addressCountry: 'US' },
+    geo: { '@type': 'GeoCoordinates', latitude: 42.6787, longitude: -71.3242 },
+    sameAs: ['https://www.facebook.com/profile.php?id=100068568395875', 'https://www.instagram.com/claucleaningcorp/']
+};
+
+// Share image (og:image) for a page photo. Social networks need a JPG/PNG around 1200x630,
+// so each photo has a JPG copy in assets/img/og/<name>.jpg (see README). Falls back to the
+// branded card when there is no copy (for example a remote Pexels photo).
+export function ogImage(photo) {
+    const name = photo && !/^https?:/.test(photo) ? photo.split('/').pop().replace(/\.\w+$/, '') : '';
+    return name && existsSync(join(SITE_ROOT, 'assets/img/og', `${name}.jpg`)) ? `${SITE}/assets/img/og/${name}.jpg` : `${SITE}/assets/img/og-image.jpg`;
+}
 
 export function breadcrumbs(items) {
     return {

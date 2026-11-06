@@ -66,6 +66,12 @@ then `npm run build`. The build fails if a Spanish key is missing.
   area, map link, social profiles and every service with its URL.
 - `sitemap.xml` (generated with all pages and their language alternates), `robots.txt`, `404.html`.
 - To edit a service page, change `tools/services-data.mjs` and run `npm run build`.
+- Every page's structured data carries the business name, phone and address (`BUSINESS` in
+  `tools/layout.mjs`), since Google does not join `@id` references across pages.
+- Share images: `assets/img/og/<photo>.jpg` (1200x630 JPG copies of the `svc-*.webp` photos) are used
+  as `og:image` when they exist; otherwise the branded `og-image.jpg`. For a new service photo, make
+  its copy, e.g. `convert assets/img/gallery/svc-x.webp -resize 1200x630^ -gravity center -extent 1200x630 -quality 82 assets/img/og/svc-x.jpg`.
+- `.htaccess` has a commented https + no-www redirect: uncomment it once SSL is active on the host.
 
 ## Before going live
 

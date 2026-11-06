@@ -6,7 +6,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SITE, SERVICES, REDIRECTS } from './services-data.mjs';
 import { HQ, CITY_LIST, STATE_NAME, citySlug, CLIENTS, CLIENT_GROUPS, GALLERY, GALLERY_CATS } from './locations-data.mjs';
-import { layout, esc, svg, ICON, abs, BUSINESS_ID, breadcrumbs, faqPage, NAV } from './layout.mjs';
+import { layout, esc, svg, ICON, abs, BUSINESS, ogImage, breadcrumbs, faqPage, NAV } from './layout.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const LANGS = ['en', 'es'];
@@ -58,14 +58,14 @@ const T = {
         bandTitle: 'Ready for a cleaner, healthier facility?',
         bandText: "Tell us about your building and we'll schedule a free walkthrough and send a written quote within one business day.",
         // gallery
-        gTitle: 'Gallery: Commercial, Carpet & Floor Cleaning Work | Clau Cleaning Corp',
+        gTitle: 'Our Work: Commercial Cleaning Photos | Clau Cleaning Corp',
         gDesc: 'Photos and videos of our commercial cleaning, medical facility cleaning, carpet cleaning and floor care work in Northern Massachusetts and Southern New Hampshire.',
         gH1: 'Our work, before and after',
         gLead: 'Medical facilities, offices, carpets and floors we clean and restore across Northern Massachusetts and Southern New Hampshire.',
         gAll: 'All', gFilter: 'Filter gallery', gMore: 'See more of our daily work on', gBefore: 'Before', gAfter: 'After',
         lbView: 'Image viewer', lbClose: 'Close', lbPrev: 'Previous', lbNext: 'Next',
         // clients
-        cTitle: 'Our Clients: Medical, School, Church & Business | Clau Cleaning Corp',
+        cTitle: 'Our Commercial Cleaning Clients | Clau Cleaning Corp',
         cDesc: 'Hospitals, surgical and imaging centers, eye-care practices, schools, churches and offices across MA and NH trust Clau Cleaning Corp. Some for 15+ years.',
         cH1: 'The organizations that trust us with their spaces',
         cLead: '11 organizations. 1 cleaning partner. Some have trusted us for more than 15 years, and every one of them for at least 2.',
@@ -73,14 +73,14 @@ const T = {
         cWhere: 'Locations we clean', cAlso: 'also', cAreas: 'Find us in your town',
         cAreasText: 'See the clients we serve and the services we offer in each town:',
         // areas
-        aTitle: 'Commercial Cleaning Service Areas in MA & NH | Clau Cleaning Corp',
+        aTitle: 'Cleaning Service Areas in MA & NH | Clau Cleaning Corp',
         aDesc: `Commercial, medical facility, carpet and floor cleaning in ${CITY_LIST.length} towns of Northern Massachusetts and Southern New Hampshire, from our base in Dracut, MA.`,
         aH1: 'Commercial cleaning across Northern MA & Southern NH',
         aLead: `From our office in Dracut, MA our crews clean medical facilities, offices, car dealerships, churches and schools in ${CITY_LIST.length} towns on both sides of the state line.`,
         aCounty: 'County', aClients: (n) => (n === 1 ? '1 client' : `${n} clients`), aMiles: (m) => `${m} mi from Dracut`, aHome: 'Our home base',
         // city
         cityTitle: (c) => `Commercial Cleaning in ${label(c)} | Clau Cleaning Corp`,
-        cityDesc: (c) => `Commercial cleaning in ${label(c)}: medical offices, clinics, labs, offices, car dealerships and churches, plus carpet cleaning and floor care. Local crew. Free quote.`,
+        cityDesc: (c) => `Commercial cleaning in ${label(c)}: medical offices, clinics, labs, offices, dealerships and churches, plus carpet and floor care. Free quote.`,
         cityH1: (c) => `Commercial cleaning in ${label(c)}`,
         cityLead: (c) => c.name === HQ.name
             ? `Medical facility, office, carpet and floor cleaning for ${c.name} businesses, from our home office right here in ${c.name}.`
@@ -113,26 +113,26 @@ const T = {
         whatsapp: 'WhatsApp',
         bandTitle: '¿Listo para una instalación más limpia y saludable?',
         bandText: 'Cuéntenos sobre su edificio: programamos una visita gratuita y le enviamos una cotización por escrito en menos de un día hábil.',
-        gTitle: 'Galería: Limpieza Comercial, de Alfombras y Pisos | Clau Cleaning Corp',
+        gTitle: 'Galería: Limpieza Comercial y de Pisos | Clau Cleaning Corp',
         gDesc: 'Fotos y videos de nuestro trabajo de limpieza comercial, instalaciones médicas, alfombras y pisos en el norte de Massachusetts y el sur de New Hampshire.',
         gH1: 'Nuestro trabajo, antes y después',
         gLead: 'Instalaciones médicas, oficinas, alfombras y pisos que limpiamos y recuperamos en el norte de Massachusetts y el sur de New Hampshire.',
         gAll: 'Todos', gFilter: 'Filtrar galería', gMore: 'Vea más de nuestro trabajo diario en', gBefore: 'Antes', gAfter: 'Después',
         lbView: 'Visor de imágenes', lbClose: 'Cerrar', lbPrev: 'Anterior', lbNext: 'Siguiente',
-        cTitle: 'Nuestros Clientes: Salud, Escuelas, Iglesias y Empresas | Clau Cleaning Corp',
+        cTitle: 'Nuestros Clientes de Limpieza Comercial | Clau Cleaning Corp',
         cDesc: 'Hospitales, centros quirúrgicos y de imágenes, oftalmología, escuelas, iglesias y oficinas de MA y NH confían en Clau Cleaning Corp. Algunos hace más de 15 años.',
         cH1: 'Las organizaciones que nos confían sus espacios',
         cLead: '11 organizaciones. 1 equipo de limpieza. Algunas confían en nosotros hace más de 15 años, y todas desde hace al menos 2.',
         cStats: [['11', 'organizaciones'], ['15+', 'años con nuestro cliente más antiguo'], ['2+', 'años con cada cliente'], [String(CITY_LIST.length), 'ciudades en MA y NH']],
         cWhere: 'Sedes que limpiamos', cAlso: 'también', cAreas: 'Encuéntrenos en su ciudad',
         cAreasText: 'Vea los clientes que atendemos y los servicios que ofrecemos en cada ciudad:',
-        aTitle: 'Zonas de Servicio de Limpieza Comercial en MA y NH | Clau Cleaning Corp',
+        aTitle: 'Zonas de Servicio en MA y NH | Clau Cleaning Corp',
         aDesc: `Limpieza comercial, de instalaciones médicas, alfombras y pisos en ${CITY_LIST.length} ciudades del norte de Massachusetts y el sur de New Hampshire, desde Dracut, MA.`,
         aH1: 'Limpieza comercial en el norte de MA y el sur de NH',
         aLead: `Desde nuestra oficina en Dracut, MA, nuestros equipos limpian instalaciones médicas, oficinas, concesionarios de autos, iglesias y escuelas en ${CITY_LIST.length} ciudades a ambos lados del límite estatal.`,
         aCounty: 'Condado de', aClients: (n) => (n === 1 ? '1 cliente' : `${n} clientes`), aMiles: (m) => `a ${m} millas de Dracut`, aHome: 'Nuestra base',
         cityTitle: (c) => `Limpieza Comercial en ${label(c)} | Clau Cleaning Corp`,
-        cityDesc: (c) => `Limpieza comercial en ${label(c)}: consultorios, clínicas, laboratorios, oficinas, concesionarios e iglesias, además de alfombras y pisos. Equipo local. Cotización gratis.`,
+        cityDesc: (c) => `Limpieza comercial en ${label(c)}: consultorios, clínicas, laboratorios, oficinas, concesionarios e iglesias, más alfombras y pisos. Cotización gratis.`,
         cityH1: (c) => `Limpieza comercial en ${label(c)}`,
         cityLead: (c) => c.name === HQ.name
             ? `Limpieza de instalaciones médicas, oficinas, alfombras y pisos para los negocios de ${c.name}, desde nuestra oficina aquí mismo en ${c.name}.`
@@ -235,9 +235,9 @@ for (const lang of LANGS) {
     const path = 'gallery/';
     const cats = GALLERY_CATS.filter((c) => GALLERY.some((g) => g.cat === c.key));
     write(lang, path, layout({
-        lang, path, active: 'gallery', bodyClass: 'service-page gallery-page', title: t.gTitle, desc: t.gDesc,
+        lang, path, active: 'gallery', bodyClass: 'service-page gallery-page', title: t.gTitle, desc: t.gDesc, image: ogImage('svc-floor'),
         jsonld: { '@context': 'https://schema.org', '@graph': [
-            { '@type': 'CollectionPage', '@id': `${abs(lang, path)}#page`, name: t.gH1, description: t.gDesc, url: abs(lang, path), inLanguage: lang, about: { '@id': BUSINESS_ID } },
+            { '@type': 'CollectionPage', '@id': `${abs(lang, path)}#page`, name: t.gH1, description: t.gDesc, url: abs(lang, path), inLanguage: lang, about: BUSINESS },
             breadcrumbs([[t.home, abs(lang, '')], [NAV[lang].gallery, abs(lang, path)]])
         ] },
         body: ({ root: r, home }) => `${hero(lang, home, [[NAV[lang].gallery]], t.gH1, t.gLead)}
@@ -271,9 +271,9 @@ for (const lang of LANGS) {
     const t = T[lang];
     const path = 'clients/';
     write(lang, path, layout({
-        lang, path, active: 'clients', bodyClass: 'service-page clients-page', title: t.cTitle, desc: t.cDesc,
+        lang, path, active: 'clients', bodyClass: 'service-page clients-page', title: t.cTitle, desc: t.cDesc, image: ogImage('svc-medical'),
         jsonld: { '@context': 'https://schema.org', '@graph': [
-            { '@type': 'CollectionPage', '@id': `${abs(lang, path)}#page`, name: t.cH1, description: t.cDesc, url: abs(lang, path), inLanguage: lang, about: { '@id': BUSINESS_ID },
+            { '@type': 'CollectionPage', '@id': `${abs(lang, path)}#page`, name: t.cH1, description: t.cDesc, url: abs(lang, path), inLanguage: lang, about: BUSINESS,
                 mainEntity: { '@type': 'ItemList', itemListElement: CLIENTS.map((c, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@type': 'Organization', name: c.name } })) } },
             breadcrumbs([[t.home, abs(lang, '')], [NAV[lang].clients, abs(lang, path)]])
         ] },
@@ -319,7 +319,7 @@ for (const lang of LANGS) {
     write(lang, path, layout({
         lang, path, active: 'areas', title: t.aTitle, desc: t.aDesc,
         jsonld: { '@context': 'https://schema.org', '@graph': [
-            { '@type': 'CollectionPage', '@id': `${abs(lang, path)}#page`, name: t.aH1, description: t.aDesc, url: abs(lang, path), inLanguage: lang, about: { '@id': BUSINESS_ID } },
+            { '@type': 'CollectionPage', '@id': `${abs(lang, path)}#page`, name: t.aH1, description: t.aDesc, url: abs(lang, path), inLanguage: lang, about: BUSINESS },
             breadcrumbs([[t.home, abs(lang, '')], [t.areasCrumb, abs(lang, path)]])
         ] },
         body: ({ home }) => `${hero(lang, home, [[t.areasCrumb]], t.aH1, t.aLead)}
@@ -365,11 +365,11 @@ for (const [ci, c] of CITY_LIST.entries()) {
         const url = abs(lang, path);
         const faq = t.faq(c, here);
         write(lang, path, layout({
-            lang, path, active: 'areas', title: t.cityTitle(c), desc: t.cityDesc(c),
+            lang, path, active: 'areas', title: t.cityTitle(c), desc: t.cityDesc(c), image: ogImage('svc-commercial'),
             jsonld: { '@context': 'https://schema.org', '@graph': [
                 {
                     '@type': 'Service', '@id': `${url}#service`, name: t.cityH1(c), serviceType: 'Commercial cleaning', description: t.cityDesc(c), url, inLanguage: lang,
-                    provider: { '@id': BUSINESS_ID },
+                    provider: BUSINESS,
                     areaServed: { '@type': 'City', name: label(c), containedInPlace: { '@type': 'State', name: STATE_NAME[c.state] } },
                     hasOfferCatalog: { '@type': 'OfferCatalog', name: t.svcHere(c), itemListElement: CITY_SERVICES.map((s) => {
                         const svc = SERVICES.find((x) => x.slug === s);

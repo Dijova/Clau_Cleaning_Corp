@@ -4,6 +4,17 @@ DirectoryIndex index.html
 
 ErrorDocument 404 /404.html
 
+# One address for the whole site: https and no www (the canonicals, hreflang and sitemap
+# all use https://claucleaningcorp.com/). Uncomment once the SSL certificate is active on
+# the final hosting. If the domain will be served WITH www, tell us first: the canonicals
+# in tools/services-data.mjs (SITE) and index.html must change to match.
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteCond %{HTTPS} off [OR]
+#     RewriteCond %{HTTP_HOST} ^www\. [NC]
+#     RewriteRule ^ https://claucleaningcorp.com%{REQUEST_URI} [L,R=301]
+# </IfModule>
+
 # Retired pages (house cleaning was discontinued; carpet and floor care were split in two).
 Redirect 301 /services/house-cleaning/ https://claucleaningcorp.com/services/commercial-cleaning/
 Redirect 301 /es/services/house-cleaning/ https://claucleaningcorp.com/es/services/commercial-cleaning/

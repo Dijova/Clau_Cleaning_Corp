@@ -6,7 +6,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { COMMON, SERVICES } from './services-data.mjs';
 import { CITY_LIST, STATE_NAME, citySlug } from './locations-data.mjs';
-import { layout, esc, svg, ICON, abs, BUSINESS_ID, breadcrumbs, faqPage } from './layout.mjs';
+import { layout, esc, svg, ICON, abs, BUSINESS, ogImage, breadcrumbs, faqPage } from './layout.mjs';
 import { SITE } from './services-data.mjs';
 
 // Remote (Pexels) URLs are used as is; our own photos are paths from the site root.
@@ -31,7 +31,7 @@ function structuredData(lang, svc) {
                 url,
                 image: isRemote(svc.image) ? svc.image : `${SITE}/${svc.image}`,
                 inLanguage: lang,
-                provider: { '@id': BUSINESS_ID },
+                provider: BUSINESS,
                 areaServed: [
                     { '@type': 'State', name: 'Massachusetts' },
                     { '@type': 'State', name: 'New Hampshire' },
@@ -146,7 +146,7 @@ for (const svc of SERVICES) {
         writeFileSync(join(dir, 'index.html'), layout({
             lang, path, active: 'services', title: t.metaTitle, desc: t.metaDesc,
             jsonld: structuredData(lang, svc), body: body(lang, svc),
-            imageAlt: `${t.name} – Clau Cleaning Corp`
+            image: ogImage(svc.image), imageAlt: `${t.name} – Clau Cleaning Corp`
         }));
         count++;
     }

@@ -7,6 +7,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SITE, SERVICES } from './services-data.mjs';
 import { CITY_LIST, CLIENTS, STATE_NAME, citySlug } from './locations-data.mjs';
+import { BUSINESS } from './layout.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -75,22 +76,11 @@ ${ind(16)}<button type="button" class="carousel-btn carousel-next" data-carousel
         jsonld: `${ind(4)}<script type="application/ld+json">
 ${JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': ['LocalBusiness', 'ProfessionalService'],
-            '@id': `${SITE}/#business`,
-            name: 'Clau Cleaning Corp',
+            ...BUSINESS,
             description: 'Commercial cleaning company based in Dracut, MA, serving Northern Massachusetts and Southern New Hampshire. Specialized in doctor\'s offices, medical facilities and laboratories, plus clinics, hospitals, offices, car dealerships, churches and schools, commercial carpet cleaning and floor care.',
-            url: `${SITE}/`,
-            logo: `${SITE}/assets/img/icon-512.png`,
-            image: `${SITE}/assets/img/og-image.jpg`,
-            telephone: '+1-978-328-2406',
-            email: 'claucleaningcorpc2@gmail.com',
-            priceRange: '$$',
-            address: { '@type': 'PostalAddress', streetAddress: '1734 Lakeview Ave #169', addressLocality: 'Dracut', addressRegion: 'MA', postalCode: '01826', addressCountry: 'US' },
-            geo: { '@type': 'GeoCoordinates', latitude: 42.6787, longitude: -71.3242 },
             areaServed: CITY_LIST.map((c) => ({ '@type': 'City', name: `${c.name}, ${c.state}`, url: `${SITE}/service-areas/${citySlug(c)}/` })),
             hasMap: 'https://www.google.com/maps/search/?api=1&query=1734+Lakeview+Ave+Dracut+MA+01826',
             knowsLanguage: ['en', 'es'],
-            sameAs: ['https://www.facebook.com/profile.php?id=100068568395875', 'https://www.instagram.com/claucleaningcorp/'],
             hasOfferCatalog: {
                 '@type': 'OfferCatalog',
                 name: 'Commercial cleaning services',
