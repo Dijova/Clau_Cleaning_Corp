@@ -161,22 +161,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://claucleaningcorp.com/services/disinfection-services/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://claucleaningcorp.com/services/disinfection-services/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://claucleaningcorp.com/es/services/disinfection-services/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://claucleaningcorp.com/services/disinfection-services/"/>
-    <lastmod>2026-11-06</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://claucleaningcorp.com/es/services/disinfection-services/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://claucleaningcorp.com/services/disinfection-services/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://claucleaningcorp.com/es/services/disinfection-services/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://claucleaningcorp.com/services/disinfection-services/"/>
-    <lastmod>2026-11-06</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://claucleaningcorp.com/services/deep-cleaning/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://claucleaningcorp.com/services/deep-cleaning/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://claucleaningcorp.com/es/services/deep-cleaning/"/>
@@ -189,22 +173,6 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://claucleaningcorp.com/services/deep-cleaning/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://claucleaningcorp.com/es/services/deep-cleaning/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://claucleaningcorp.com/services/deep-cleaning/"/>
-    <lastmod>2026-11-06</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://claucleaningcorp.com/services/janitorial-maintenance-contracts/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://claucleaningcorp.com/services/janitorial-maintenance-contracts/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://claucleaningcorp.com/es/services/janitorial-maintenance-contracts/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://claucleaningcorp.com/services/janitorial-maintenance-contracts/"/>
-    <lastmod>2026-11-06</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://claucleaningcorp.com/es/services/janitorial-maintenance-contracts/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://claucleaningcorp.com/services/janitorial-maintenance-contracts/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://claucleaningcorp.com/es/services/janitorial-maintenance-contracts/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://claucleaningcorp.com/services/janitorial-maintenance-contracts/"/>
     <lastmod>2026-11-06</lastmod>
     <priority>0.7</priority>
   </url>
