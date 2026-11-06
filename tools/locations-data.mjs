@@ -165,6 +165,8 @@ const g = (name) => `assets/img/gallery/${name}.webp`;
 const v = (name) => `assets/video/${name}.mp4`;
 
 export const GALLERY = [
+    { type: 'image', cat: 'facilities', tall: true, src: g('school-hallway-shine'), w: 720, h: 960,
+        en: 'Freshly waxed school hallway floor', es: 'Piso de pasillo escolar recién encerado' },
     { type: 'before-after', cat: 'before-after', before: g('lab-before'), after: g('lab-after'), w: 720, h: 1280,
         en: 'Clinical lab floor before and after strip and wax', es: 'Piso de laboratorio clínico antes y después del decapado y encerado' },
     { type: 'image', cat: 'medical', tall: true, src: g('patient-area-clean'), w: 720, h: 960,

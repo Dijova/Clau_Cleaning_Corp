@@ -455,7 +455,7 @@ export const SERVICES = [
         industry: true,
         formValue: 'school',
         serviceType: 'School cleaning',
-        image: px(29932839),
+        image: own('svc-school'),
         en: {
             name: 'School Cleaning',
             short: 'Healthy classrooms for public and private schools, scheduled around the school day.',
