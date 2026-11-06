@@ -147,9 +147,9 @@ export function footer(lang, root, home) {
                 <img src="${root}assets/img/logo-white.svg" alt="Clau Cleaning Corp" width="200" height="110">
                 <p>${n.tagline}</p>
                 <div class="social">
-                    <a href="https://www.facebook.com/profile.php?id=100068568395875" target="_blank" rel="noopener noreferrer" aria-label="Clau Cleaning Corp on Facebook">${svg(ICON.fb)}</a>
+                    <a href="https://www.facebook.com/profile.php?id=61595804780839" target="_blank" rel="noopener noreferrer" aria-label="Clau Cleaning Corp on Facebook">${svg(ICON.fb)}</a>
                     <a href="https://wa.me/19783282406" target="_blank" rel="noopener noreferrer" aria-label="Clau Cleaning Corp on WhatsApp">${svg(ICON.wa)}</a>
-                    <a href="https://www.instagram.com/claucleaningcorp/" target="_blank" rel="noopener noreferrer" aria-label="Clau Cleaning Corp on Instagram">${svg(ICON.ig)}</a>
+                    <a href="https://www.instagram.com/claucleaning/" target="_blank" rel="noopener noreferrer" aria-label="Clau Cleaning Corp on Instagram">${svg(ICON.ig)}</a>
                 </div>
             </div>
             <div>
@@ -217,7 +217,7 @@ export const BUSINESS = {
     priceRange: '$$',
     address: { '@type': 'PostalAddress', streetAddress: '1734 Lakeview Ave #169', addressLocality: 'Dracut', addressRegion: 'MA', postalCode: '01826', addressCountry: 'US' },
     geo: { '@type': 'GeoCoordinates', latitude: 42.6787, longitude: -71.3242 },
-    sameAs: ['https://www.facebook.com/profile.php?id=100068568395875', 'https://www.instagram.com/claucleaningcorp/']
+    sameAs: ['https://www.facebook.com/profile.php?id=61595804780839', 'https://www.instagram.com/claucleaning/']
 };
 
 // Share image (og:image) for a page photo. Social networks need a JPG/PNG around 1200x630,

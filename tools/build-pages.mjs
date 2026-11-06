@@ -251,7 +251,7 @@ for (const lang of LANGS) {
                 <ul class="gallery-grid" id="gallery-grid">
                     ${GALLERY.map((g) => galleryItem(lang, g, r)).join('\n                    ')}
                 </ul>
-                <p class="gallery-cta"><span>${t.gMore}</span> <a href="https://www.facebook.com/profile.php?id=100068568395875" target="_blank" rel="noopener noreferrer">Facebook</a> · <a href="https://www.instagram.com/claucleaningcorp/" target="_blank" rel="noopener noreferrer">Instagram</a></p>
+                <p class="gallery-cta"><span>${t.gMore}</span> <a href="https://www.facebook.com/profile.php?id=61595804780839" target="_blank" rel="noopener noreferrer">Facebook</a> · <a href="https://www.instagram.com/claucleaning/" target="_blank" rel="noopener noreferrer">Instagram</a></p>
             </div>
 
             <dialog class="lightbox" id="lightbox" aria-label="${t.lbView}">
