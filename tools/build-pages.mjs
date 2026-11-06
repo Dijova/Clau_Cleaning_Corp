@@ -90,6 +90,8 @@ const T = {
             ? `${n === 1 ? 'This organization counts' : `These ${n} organizations count`} on Clau Cleaning Corp in ${label(c)}:`
             : `We already clean for these organizations close to ${c.name}:`),
         allClients: 'See all our clients →',
+        workEyebrow: 'Our work', workTitle: (c) => `Real results for businesses near ${c.name}`,
+        workText: 'Photos from our own crews: floor stripping and waxing, medical office cleaning and deep cleaning.', workMore: 'See the full gallery →',
         svcHere: (c) => `Our cleaning services in ${c.name}`,
         whyHere: (c) => `Why ${c.name} facilities choose Clau Cleaning Corp`,
         why: ['Specialists in doctor\'s offices, medical facilities and laboratories', 'Hospital-grade, EPA-registered disinfectants and color-coded microfiber', 'HEPA backpack vacuums and color-coded flat mopping system', 'Written work schedule, evening service and one point of contact', 'Bilingual crew and supervisors: English and Spanish', '20+ years cleaning in Massachusetts and New Hampshire'],
@@ -140,6 +142,8 @@ const T = {
             ? `${n === 1 ? 'Esta organización confía' : `Estas ${n} organizaciones confían`} en Clau Cleaning Corp en ${label(c)}:`
             : `Ya limpiamos para estas organizaciones cerca de ${c.name}:`),
         allClients: 'Ver todos nuestros clientes →',
+        workEyebrow: 'Nuestro trabajo', workTitle: (c) => `Resultados reales para negocios cerca de ${c.name}`,
+        workText: 'Fotos de nuestro propio equipo: decapado y encerado de pisos, limpieza de consultorios médicos y limpieza profunda.', workMore: 'Ver toda la galería →',
         svcHere: (c) => `Nuestros servicios de limpieza en ${c.name}`,
         whyHere: (c) => `Por qué las instalaciones de ${c.name} eligen Clau Cleaning Corp`,
         why: ['Especialistas en consultorios médicos, instalaciones médicas y laboratorios', 'Desinfectantes de grado hospitalario registrados por la EPA y microfibra codificada por color', 'Aspiradoras de mochila HEPA y sistema de trapeado plano por color', 'Plan de trabajo por escrito, servicio nocturno y un solo contacto', 'Equipo y supervisores bilingües: inglés y español', 'Más de 20 años limpiando en Massachusetts y New Hampshire'],
@@ -209,19 +213,21 @@ const cityLinks = (lang, home, st) => `<ul class="area-list area-links">
                     </ul>`;
 
 // ---------- Gallery ----------
-function galleryItem(lang, g, rootRel) {
+// link: when set, photos link to that page (city pages) instead of opening the lightbox.
+function galleryItem(lang, g, rootRel, link) {
     const src = (s) => (/^https?:/.test(s) ? s : rootRel + s);
     const alt = esc(g[lang]);
     if (g.type === 'video') {
         return `<li data-cat="${g.cat}" class="tall media-video"><video controls preload="metadata" playsinline${g.poster ? ` poster="${src(g.poster)}"` : ''} width="${g.w}" height="${g.h}" aria-label="${alt}"><source src="${src(g.src)}" type="video/mp4"></video></li>`;
     }
     if (g.type === 'before-after') {
-        return `<li data-cat="${g.cat}" class="wide"><figure class="ba-pair">
+        return `<li data-cat="${g.cat}" class="wide tall"><figure class="ba-pair">
                         <div><img src="${src(g.before)}" alt="${alt} – ${T[lang].gBefore}" loading="lazy" width="${g.w}" height="${g.h}"><span class="ba-tag">${T[lang].gBefore}</span></div>
                         <div><img src="${src(g.after)}" alt="${alt} – ${T[lang].gAfter}" loading="lazy" width="${g.w}" height="${g.h}"><span class="ba-tag ba-after">${T[lang].gAfter}</span></div>
                     </figure></li>`;
     }
-    return `<li data-cat="${g.cat}"${g.tall ? ' class="tall"' : ''}><button type="button" class="gallery-item"><img src="${src(g.src)}" alt="${alt}" loading="lazy" width="${g.w}" height="${g.h}"></button></li>`;
+    const img = `<img src="${src(g.src)}" alt="${alt}" loading="lazy" width="${g.w}" height="${g.h}">`;
+    return `<li data-cat="${g.cat}"${g.tall ? ' class="tall"' : ''}>${link ? `<a class="gallery-item" href="${link}">${img}</a>` : `<button type="button" class="gallery-item">${img}</button>`}</li>`;
 }
 
 for (const lang of LANGS) {
@@ -341,7 +347,13 @@ ${band(lang, home)}`
 // ---------- City pages ----------
 const CITY_SERVICES = ['commercial-cleaning', 'medical-office-cleaning', 'laboratory-cleaning', 'carpet-cleaning', 'floor-care', 'office-cleaning', 'car-dealership-cleaning', 'church-cleaning', 'school-cleaning'];
 
-for (const c of CITY_LIST) {
+// Real work shown on each city page: one before/after pair and two photos, rotated by city
+// so neighbouring towns do not all show the same pictures.
+const BA = GALLERY.filter((g) => g.type === 'before-after');
+const PHOTOS = GALLERY.filter((g) => g.type === 'image');
+const cityWork = (i) => [BA[i % BA.length], { ...PHOTOS[(2 * i) % PHOTOS.length], tall: false }, { ...PHOTOS[(2 * i + 1) % PHOTOS.length], tall: false }];
+
+for (const [ci, c] of CITY_LIST.entries()) {
     const here = clientsIn(c);
     const shown = here.length
         ? here
@@ -380,6 +392,20 @@ for (const c of CITY_LIST) {
                     ${shown.map((x) => clientCard(lang, x, r, home, { city: c })).join('\n                    ')}
                 </ul>
                 <p class="center-link"><a href="${home}clients/" class="service-more">${t.allClients}</a></p>
+            </div>
+        </section>
+
+        <section class="section gallery city-work">
+            <div class="container">
+                <div class="section-head">
+                    <p class="eyebrow">${t.workEyebrow}</p>
+                    <h2>${esc(t.workTitle(c))}</h2>
+                    <p>${t.workText}</p>
+                </div>
+                <ul class="gallery-grid">
+                    ${cityWork(ci).map((g) => galleryItem(lang, g, r, `${home}gallery/`)).join('\n                    ')}
+                </ul>
+                <p class="center-link"><a href="${home}gallery/" class="service-more">${t.workMore}</a></p>
             </div>
         </section>
 

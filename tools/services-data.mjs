@@ -7,6 +7,8 @@
 import { CITY_LIST } from './locations-data.mjs';
 
 const px = (id, w = 1200) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
+// Our own photos (assets/img/gallery/, 1200x800 WebP). Paths are relative to the site root.
+const own = (name) => `assets/img/gallery/${name}.webp`;
 
 export const SITE = 'https://claucleaningcorp.com';
 
@@ -74,7 +76,7 @@ export const SERVICES = [
         formValue: 'commercial',
         featured: true,
         serviceType: 'Commercial cleaning',
-        image: px(6794929),
+        image: own('svc-commercial'),
         en: {
             name: 'Commercial Cleaning',
             short: 'Janitorial programs for medical facilities, offices, car dealerships, churches and schools, with a written work schedule.',
@@ -139,7 +141,7 @@ export const SERVICES = [
         formValue: 'medical',
         featured: true,
         serviceType: 'Medical office cleaning',
-        image: px(16571732),
+        image: own('svc-medical'),
         en: {
             name: 'Medical Facility Cleaning',
             short: 'Our specialty: doctor\'s offices, clinics, hospitals, surgical and imaging centers cleaned to healthcare standards.',
@@ -229,7 +231,7 @@ export const SERVICES = [
         formValue: 'floor',
         featured: true,
         serviceType: 'Commercial floor care',
-        image: px(6197106),
+        image: own('svc-floor'),
         en: {
             name: 'Floor Cleaning & Care',
             short: 'Strip and wax, scrub and recoat, machine scrubbing and burnishing for VCT, tile and hard commercial floors.',
@@ -315,7 +317,7 @@ export const SERVICES = [
         slug: 'office-cleaning',
         formValue: 'office',
         serviceType: 'Commercial office cleaning',
-        image: px(6794930),
+        image: own('svc-office'),
         en: {
             name: 'Office Cleaning',
             short: 'Nightly or weekly janitorial service for offices and professional buildings, with the same crew every visit.',
@@ -525,7 +527,7 @@ export const SERVICES = [
         slug: 'deep-cleaning',
         formValue: 'deep',
         serviceType: 'Commercial deep cleaning',
-        image: px(6196566),
+        image: own('svc-deep'),
         en: {
             name: 'Deep Cleaning & Special Services',
             short: 'Top-to-bottom cleaning plus windows, power washing, ceilings and emergency cleanup.',
@@ -567,7 +569,7 @@ export const SERVICES = [
         slug: 'janitorial-maintenance-contracts',
         formValue: 'contract',
         serviceType: 'Janitorial services',
-        image: px(4440533),
+        image: own('svc-janitorial'),
         en: {
             name: 'Janitorial Maintenance Contracts',
             short: 'Reliable recurring programs with a written work schedule, a dedicated crew and quality checks.',
