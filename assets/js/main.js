@@ -96,6 +96,33 @@
         revealTargets.forEach(function (el) { el.classList.add('reveal'); io.observe(el); });
     }
 
+    /* ---------- Client carousel (home) ---------- */
+    document.querySelectorAll('[data-carousel-root]').forEach(function (root) {
+        var track = root.querySelector('.client-track');
+        if (!track) return;
+        function step() { var li = track.querySelector('li'); return li ? li.getBoundingClientRect().width + 16 : 240; }
+        function go(dir) {
+            var max = track.scrollWidth - track.clientWidth - 2;
+            if (dir > 0 && track.scrollLeft >= max) track.scrollTo({ left: 0 });
+            else if (dir < 0 && track.scrollLeft <= 0) track.scrollTo({ left: max });
+            else track.scrollBy({ left: dir * step() });
+        }
+        root.addEventListener('click', function (e) {
+            var b = e.target.closest('[data-carousel]');
+            if (b) go(b.getAttribute('data-carousel') === 'next' ? 1 : -1);
+        });
+        track.addEventListener('keydown', function (e) {
+            if (e.key === 'ArrowRight') { e.preventDefault(); go(1); }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
+        });
+        // Gentle autoplay, paused on hover/focus/touch and off for reduced motion.
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var paused = false;
+        ['mouseenter', 'focusin', 'touchstart'].forEach(function (ev) { root.addEventListener(ev, function () { paused = true; }, { passive: true }); });
+        ['mouseleave', 'focusout'].forEach(function (ev) { root.addEventListener(ev, function () { paused = false; }); });
+        setInterval(function () { if (!paused && !document.hidden) go(1); }, 3500);
+    });
+
     /* ---------- Gallery filter + lightbox ---------- */
     var grid = document.getElementById('gallery-grid');
     var chips = document.querySelectorAll('.gallery-filters .chip');

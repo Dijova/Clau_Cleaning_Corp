@@ -70,6 +70,8 @@ export const CITIES = {
 
 // Order matters: it is the order of the home cards, the menu of related services and the footer.
 // `featured: true` services are the core of the business and are highlighted on the home page.
+// `industry: true` pages describe a type of facility (offices, dealerships...) and are listed under
+// "Industries we serve" on the home page instead of as separate service cards.
 export const SERVICES = [
     {
         slug: 'commercial-cleaning',
@@ -79,7 +81,7 @@ export const SERVICES = [
         image: own('svc-commercial'),
         en: {
             name: 'Commercial Cleaning',
-            short: 'Janitorial programs for medical facilities, offices, car dealerships, churches and schools, with a written work schedule.',
+            short: 'Recurring janitorial contracts for medical facilities, offices, car dealerships, churches and schools, with a written work schedule.',
             bullets: ['Daily, weekly or custom schedules', 'Evening service, Monday to Friday', 'One crew, one point of contact'],
             metaTitle: 'Commercial Cleaning Services in MA & NH | Clau Cleaning Corp',
             metaDesc: 'Commercial cleaning for medical offices, clinics, labs, offices, car dealerships, churches and schools in Northern MA & Southern NH. Free walkthrough and quote.',
@@ -96,19 +98,21 @@ export const SERVICES = [
                 'Internal glass, sinks, drinking fountains and high-touch points',
                 'Weekly dusting of furniture, blinds, vents, light fixtures and baseboards',
                 'Daily HEPA vacuuming and damp mopping of every floor',
-                'Closing routine: janitor closet, lights, doors and alarm'
+                'Closing routine: janitor closet, lights, doors and alarm',
+                'One-year agreement with a fixed monthly price and scheduled quality inspections'
             ],
             ideal: ['Doctor\'s offices, clinics and hospitals', 'Laboratories and medical facilities', 'Car dealerships and showrooms', 'Churches, schools and offices'],
             faq: [
                 ['What types of facilities do you clean?', 'Medical offices, clinics, hospitals and laboratories are our specialty. We also clean offices, car dealerships and showrooms, churches, schools and other commercial facilities.'],
                 ['When do you clean?', 'Most commercial service is done in the evening, Monday to Friday, so your staff, patients and customers are never interrupted. We can also work early mornings or weekends.'],
                 ['What does the contract include?', 'A written work schedule with every area and task, a fixed monthly price and a one-year term that renews automatically. Special services such as carpet extraction or floor stripping are quoted separately or included in the monthly price, as you prefer.'],
-                ['Do you provide paper products and soap?', 'We restock paper, soap and liners from your inventory, or we can supply them at competitive prices.']
+                ['Do you provide paper products and soap?', 'We restock paper, soap and liners from your inventory, or we can supply them at competitive prices.'],
+                ['Can the contract change if our needs change?', 'Yes. We review the scope with you and adjust frequency or tasks when your space or schedule changes, and you always have one bilingual point of contact with scheduled quality inspections.']
             ]
         },
         es: {
             name: 'Limpieza Comercial',
-            short: 'Programas de limpieza para instalaciones médicas, oficinas, concesionarios de autos, iglesias y escuelas, con un plan de trabajo por escrito.',
+            short: 'Contratos de limpieza recurrentes para instalaciones médicas, oficinas, concesionarios de autos, iglesias y escuelas, con un plan de trabajo por escrito.',
             bullets: ['Horarios diarios, semanales o a la medida', 'Servicio nocturno de lunes a viernes', 'Un equipo, un solo contacto'],
             metaTitle: 'Limpieza Comercial en MA y NH | Clau Cleaning Corp',
             metaDesc: 'Limpieza comercial para consultorios, clínicas, laboratorios, oficinas, concesionarios de autos, iglesias y escuelas en el norte de MA y el sur de NH. Visita y cotización gratis.',
@@ -125,14 +129,16 @@ export const SERVICES = [
                 'Vidrios internos, lavamanos, bebederos y puntos de alto contacto',
                 'Polvo semanal de muebles, persianas, rejillas, lámparas y zócalos',
                 'Aspirado HEPA y trapeado húmedo diario de todos los pisos',
-                'Rutina de cierre: cuarto de limpieza, luces, puertas y alarma'
+                'Rutina de cierre: cuarto de limpieza, luces, puertas y alarma',
+                'Contrato de un año con precio mensual fijo e inspecciones de calidad programadas'
             ],
             ideal: ['Consultorios médicos, clínicas y hospitales', 'Laboratorios e instalaciones médicas', 'Concesionarios de autos y salas de exhibición', 'Iglesias, escuelas y oficinas'],
             faq: [
                 ['¿Qué tipo de instalaciones limpian?', 'Nuestra especialidad son los consultorios médicos, clínicas, hospitales y laboratorios. También limpiamos oficinas, concesionarios de autos y salas de exhibición, iglesias, escuelas y otras instalaciones comerciales.'],
                 ['¿En qué horario limpian?', 'La mayor parte del servicio comercial se hace en la noche, de lunes a viernes, para no interrumpir a su personal, pacientes ni clientes. También podemos trabajar temprano en la mañana o los fines de semana.'],
                 ['¿Qué incluye el contrato?', 'Un plan de trabajo por escrito con cada área y tarea, un precio mensual fijo y un plazo de un año que se renueva automáticamente. Los servicios especiales, como la extracción de alfombras o el decapado de pisos, se cotizan aparte o se incluyen en la mensualidad, como usted prefiera.'],
-                ['¿Ponen el papel y el jabón?', 'Reponemos papel, jabón y bolsas de su inventario, o podemos suministrarlos a precios competitivos.']
+                ['¿Ponen el papel y el jabón?', 'Reponemos papel, jabón y bolsas de su inventario, o podemos suministrarlos a precios competitivos.'],
+                ['¿El contrato puede cambiar si cambian nuestras necesidades?', 'Sí. Revisamos el alcance con usted y ajustamos la frecuencia o las tareas cuando cambian su espacio o su horario, y siempre tiene un solo contacto bilingüe e inspecciones de calidad programadas.']
             ]
         }
     },
@@ -152,11 +158,12 @@ export const SERVICES = [
             lead: 'Doctor\'s offices, clinics, hospitals, surgical and imaging centers cleaned and disinfected to healthcare hygiene standards, after hours and on your schedule.',
             imageAlt: 'Clean, disinfected doctor\'s office examination room',
             body: 'Medical facilities are our specialty. Rehab hospitals, surgical and imaging centers, eye-care practices and behavioral health centers trust us every night. Our crew follows zone-based workflows with color-coded microfiber cloths and hospital-grade, EPA-registered disinfectants, and respects each product\'s contact time so germs are not carried from one room to the next.',
-            included: ['Exam, treatment and procedure room disinfection', 'Waiting rooms, reception desks and check-in areas', 'Restrooms disinfected and restocked daily', 'High-touch points: handles, rails, switches, chair arms, phones', 'Hand sinks, counters and drinking fountains', 'Floor care for VCT, tile and carpet, with HEPA vacuums', 'Proper handling of regular (non-medical) waste'],
+            included: ['Exam, treatment and procedure room disinfection', 'Waiting rooms, reception desks and check-in areas', 'Restrooms disinfected and restocked daily', 'Critical surface disinfection: handles, rails, switches, chair arms, phones, with correct contact times', 'Hand sinks, counters and drinking fountains', 'Floor care for VCT, tile and carpet, with HEPA vacuums', 'Proper handling of regular (non-medical) waste'],
             ideal: ['Doctor\'s and dental offices', 'Clinics and outpatient centers', 'Hospitals and rehab facilities', 'Surgical, imaging and eye-care centers'],
             faq: [
                 ['Do you use hospital-grade disinfectants?', 'Yes. We use EPA-registered, hospital-grade disinfectants and respect each product\'s contact time so surfaces are actually disinfected, not just wiped.'],
                 ['Can you clean after office hours?', 'Yes. Most medical clients prefer evening service, Monday to Friday, so patients and staff are never interrupted.'],
+                ['What is the difference between cleaning and disinfecting?', 'Cleaning removes dirt and most germs; disinfecting uses a registered product to kill germs on a clean surface. We do both, in that order, and can add extra disinfection visits during flu season or after an outbreak.'],
                 ['Do you handle medical or biohazard waste?', 'No. We handle regular waste only. Regulated medical waste must be collected by a licensed medical waste company.'],
                 ['Which medical facilities do you already clean?', 'Our clients include Northeast Rehabilitation Hospital Network, Tallman Eye Associates, Orchard Surgical Center, Orchard Imaging and Center for Life Management, across Massachusetts and New Hampshire.']
             ]
@@ -171,11 +178,12 @@ export const SERVICES = [
             lead: 'Consultorios, clínicas, hospitales, centros quirúrgicos y de imágenes limpios y desinfectados con estándares de higiene sanitaria, fuera de horario y según su agenda.',
             imageAlt: 'Consultorio médico limpio y desinfectado',
             body: 'Las instalaciones médicas son nuestra especialidad. Hospitales de rehabilitación, centros quirúrgicos y de imágenes, consultorios de oftalmología y centros de salud mental confían en nosotros cada noche. Nuestro equipo trabaja por zonas, con paños de microfibra codificados por color y desinfectantes de grado hospitalario registrados por la EPA, respetando los tiempos de contacto para que los gérmenes no pasen de una sala a otra.',
-            included: ['Desinfección de salas de examen, tratamiento y procedimientos', 'Salas de espera, recepción y áreas de registro', 'Baños desinfectados y abastecidos a diario', 'Puntos de alto contacto: manijas, barandas, interruptores, brazos de sillas, teléfonos', 'Lavamanos, mesones y bebederos', 'Cuidado de pisos de vinilo, baldosa y alfombra, con aspiradoras HEPA', 'Manejo adecuado de residuos comunes (no médicos)'],
+            included: ['Desinfección de salas de examen, tratamiento y procedimientos', 'Salas de espera, recepción y áreas de registro', 'Baños desinfectados y abastecidos a diario', 'Desinfección de superficies críticas: manijas, barandas, interruptores, brazos de sillas, teléfonos, con tiempos de contacto correctos', 'Lavamanos, mesones y bebederos', 'Cuidado de pisos de vinilo, baldosa y alfombra, con aspiradoras HEPA', 'Manejo adecuado de residuos comunes (no médicos)'],
             ideal: ['Consultorios médicos y dentales', 'Clínicas y centros ambulatorios', 'Hospitales y centros de rehabilitación', 'Centros quirúrgicos, de imágenes y de oftalmología'],
             faq: [
                 ['¿Usan desinfectantes de grado hospitalario?', 'Sí. Usamos desinfectantes de grado hospitalario registrados por la EPA y respetamos el tiempo de contacto de cada producto, para que las superficies queden realmente desinfectadas.'],
                 ['¿Pueden limpiar fuera del horario de atención?', 'Sí. La mayoría de nuestros clientes médicos prefiere servicio nocturno, de lunes a viernes, sin interrumpir a pacientes ni personal.'],
+                ['¿Cuál es la diferencia entre limpiar y desinfectar?', 'Limpiar quita la suciedad y la mayoría de gérmenes; desinfectar usa un producto registrado para eliminar gérmenes en una superficie limpia. Hacemos ambos, en ese orden, y podemos sumar visitas de desinfección en temporada de gripe o después de un brote.'],
                 ['¿Manejan residuos médicos o peligrosos?', 'No. Solo manejamos residuos comunes. Los residuos médicos regulados deben recogerlos empresas autorizadas.'],
                 ['¿Qué instalaciones médicas limpian hoy?', 'Entre nuestros clientes están Northeast Rehabilitation Hospital Network, Tallman Eye Associates, Orchard Surgical Center, Orchard Imaging y Center for Life Management, en Massachusetts y New Hampshire.']
             ]
@@ -186,7 +194,7 @@ export const SERVICES = [
         formValue: 'carpet',
         featured: true,
         serviceType: 'Commercial carpet cleaning',
-        image: px(4107275),
+        image: own('svc-carpet'),
         en: {
             name: 'Carpet Cleaning',
             short: 'Hot water extraction and encapsulation that restore commercial carpet and remove winter salt and stains.',
@@ -275,7 +283,7 @@ export const SERVICES = [
         slug: 'laboratory-cleaning',
         formValue: 'laboratory',
         serviceType: 'Laboratory cleaning',
-        image: px(7789603),
+        image: own('svc-laboratory'),
         en: {
             name: 'Laboratory Cleaning',
             short: 'Careful, protocol-driven cleaning for medical and research labs, with color-coded tools and no cross-contamination.',
@@ -315,6 +323,7 @@ export const SERVICES = [
     },
     {
         slug: 'office-cleaning',
+        industry: true,
         formValue: 'office',
         serviceType: 'Commercial office cleaning',
         image: own('svc-office'),
@@ -357,6 +366,7 @@ export const SERVICES = [
     },
     {
         slug: 'car-dealership-cleaning',
+        industry: true,
         formValue: 'dealership',
         serviceType: 'Car dealership cleaning',
         image: px(8146331),
@@ -399,6 +409,7 @@ export const SERVICES = [
     },
     {
         slug: 'church-cleaning',
+        industry: true,
         formValue: 'church',
         serviceType: 'Church cleaning',
         image: px(2675061),
@@ -441,6 +452,7 @@ export const SERVICES = [
     },
     {
         slug: 'school-cleaning',
+        industry: true,
         formValue: 'school',
         serviceType: 'School cleaning',
         image: px(29932839),
@@ -478,48 +490,6 @@ export const SERVICES = [
                 ['¿En qué horario limpian las escuelas?', 'Después de clases, en la noche, los fines de semana o en vacaciones. Acordamos un horario que nunca interrumpe a estudiantes ni personal.'],
                 ['¿Hacen limpieza profunda en verano?', 'Sí. Las vacaciones son el mejor momento para decapar y encerar pisos, extraer alfombras y hacer limpieza profunda.'],
                 ['¿Qué escuelas limpian?', 'Entre nuestros clientes está Saint Christopher Academy en Nashua, NH.']
-            ]
-        }
-    },
-    {
-        slug: 'disinfection-services',
-        formValue: 'disinfection',
-        serviceType: 'Disinfection service',
-        image: px(4021256),
-        en: {
-            name: 'Critical Surface Disinfection',
-            short: 'Targeted disinfection of high-touch surfaces to prevent cross-contamination.',
-            bullets: ['Door handles, rails & switches', 'Color-coded cloths by zone', 'Correct disinfectant dwell times'],
-            metaTitle: 'Disinfection Services in MA & NH | Clau Cleaning Corp',
-            metaDesc: 'Targeted disinfection of high-touch surfaces for clinics, labs, schools, offices and churches in Northern MA & Southern NH, to prevent cross-contamination.',
-            h1: 'Disinfection services that stop germs on the surfaces people touch most',
-            lead: 'Targeted disinfection of high-touch surfaces to reduce the spread of illness, ideal for flu season and after an outbreak.',
-            imageAlt: 'Gloved hands disinfecting a critical surface',
-            body: 'Disinfection only works when it is done right: clean first, use the right product and leave it on the surface for its full contact time. We follow those steps on every visit, with hospital-grade disinfecting all-purpose spray and color-coded microfiber cloths.',
-            included: ['Door handles, push plates and railings', 'Light switches, elevator buttons, keypads and phones', 'Desks, counters and tables', 'Restrooms, sinks and break areas', 'Color-coded cloths by zone', 'Correct disinfectant contact times'],
-            ideal: ['Clinics, medical offices and labs', 'Schools and daycares', 'Offices and dealerships', 'Churches and community spaces'],
-            faq: [
-                ['What is the difference between cleaning and disinfecting?', 'Cleaning removes dirt and most germs; disinfecting uses a registered product to kill germs on a clean surface. We do both, in that order.'],
-                ['Is disinfection a one-time service?', 'It can be. Many clients add it to their regular cleaning during flu season or book a one-time service after an outbreak.'],
-                ['Are the products safe?', 'We use EPA-registered disinfectants according to their labels and ventilate areas as needed.']
-            ]
-        },
-        es: {
-            name: 'Desinfección de Superficies Críticas',
-            short: 'Desinfección enfocada en superficies de alto contacto para evitar la contaminación cruzada.',
-            bullets: ['Manijas, barandas e interruptores', 'Paños codificados por color según la zona', 'Tiempos de contacto correctos del desinfectante'],
-            metaTitle: 'Servicios de Desinfección en MA y NH | Clau Cleaning Corp',
-            metaDesc: 'Desinfección de superficies de alto contacto en clínicas, laboratorios, escuelas, oficinas e iglesias del norte de MA y el sur de NH para evitar contagios.',
-            h1: 'Servicios de desinfección que frenan los gérmenes donde más se toca',
-            lead: 'Desinfección enfocada en superficies de alto contacto para reducir el contagio, ideal en temporada de gripe y después de un brote.',
-            imageAlt: 'Manos con guantes desinfectando una superficie crítica',
-            body: 'La desinfección solo funciona si se hace bien: primero limpiar, usar el producto adecuado y dejarlo actuar todo su tiempo de contacto. Seguimos esos pasos en cada visita, con desinfectante multiusos de grado hospitalario y paños de microfibra codificados por color.',
-            included: ['Manijas, placas de empuje y barandas', 'Interruptores, botones de ascensor, teclados y teléfonos', 'Escritorios, mesones y mesas', 'Baños, lavamanos y áreas de descanso', 'Paños codificados por color según la zona', 'Tiempos de contacto correctos del desinfectante'],
-            ideal: ['Clínicas, consultorios y laboratorios', 'Escuelas y guarderías', 'Oficinas y concesionarios', 'Iglesias y espacios comunitarios'],
-            faq: [
-                ['¿Cuál es la diferencia entre limpiar y desinfectar?', 'Limpiar quita la suciedad y la mayoría de gérmenes; desinfectar usa un producto registrado para eliminar gérmenes en una superficie limpia. Hacemos ambos, en ese orden.'],
-                ['¿La desinfección es un servicio único?', 'Puede serlo. Muchos clientes la agregan a su limpieza regular en temporada de gripe o la reservan una vez después de un brote.'],
-                ['¿Los productos son seguros?', 'Usamos desinfectantes registrados por la EPA según su etiqueta y ventilamos las áreas cuando es necesario.']
             ]
         }
     },
@@ -564,53 +534,13 @@ export const SERVICES = [
                 ['¿Ofrecen limpieza de emergencia?', 'Sí. Llame al +1 978-328-2406 después de un incendio, inundación o fuga de agua y enviaremos un equipo lo antes posible.']
             ]
         }
-    },
-    {
-        slug: 'janitorial-maintenance-contracts',
-        formValue: 'contract',
-        serviceType: 'Janitorial services',
-        image: own('svc-janitorial'),
-        en: {
-            name: 'Janitorial Maintenance Contracts',
-            short: 'Reliable recurring programs with a written work schedule, a dedicated crew and quality checks.',
-            bullets: ['Daily, weekly or monthly plans', 'Supplies & restocking available', 'Scheduled quality inspections'],
-            metaTitle: 'Janitorial Contracts in MA & NH | Clau Cleaning Corp',
-            metaDesc: 'Recurring janitorial contracts for medical facilities, offices, dealerships, churches and schools in Northern MA & Southern NH, with a written work schedule.',
-            h1: 'Janitorial contracts you can count on, week after week',
-            lead: 'Daily, weekly or monthly cleaning programs with a written work schedule, a dedicated crew, one point of contact and scheduled quality checks.',
-            imageAlt: 'Professional cleaning products prepared for a maintenance visit',
-            body: 'A good cleaning contract should be simple: a clear scope, a reliable crew and someone who answers when you call. Our agreements list every area and task with its frequency, a fixed monthly price and a one-year term that renews automatically unless either side gives written notice 30 days before the anniversary. Some clients have been with us for more than 15 years.',
-            included: ['Written work schedule: every area, task and frequency', 'Dedicated, consistent crew', 'Evening service, Monday to Friday, or your schedule', 'Paper, soap and liners restocked or supplied', 'Special services on request: carpet, floors, windows', 'Scheduled quality inspections and one bilingual point of contact'],
-            ideal: ['Medical facilities and laboratories', 'Office buildings and property managers', 'Car dealerships', 'Churches and schools'],
-            faq: [
-                ['Can the contract change if our needs change?', 'Yes. We review the scope with you and adjust frequency or tasks when your space or schedule changes.'],
-                ['Who do we call if something is missed?', 'You have one point of contact who answers in English or Spanish and fixes issues quickly.'],
-                ['Do you provide supplies?', 'We restock paper products, soap and liners from your inventory, or supply them at competitive prices.']
-            ]
-        },
-        es: {
-            name: 'Contratos de Mantenimiento',
-            short: 'Programas recurrentes y confiables con plan de trabajo por escrito, equipo dedicado y controles de calidad.',
-            bullets: ['Planes diarios, semanales o mensuales', 'Suministros y reposición disponibles', 'Inspecciones de calidad programadas'],
-            metaTitle: 'Contratos de Limpieza en MA y NH | Clau Cleaning Corp',
-            metaDesc: 'Contratos de limpieza recurrentes para instalaciones médicas, oficinas, concesionarios, iglesias y escuelas en el norte de MA y el sur de NH, con plan de trabajo por escrito.',
-            h1: 'Contratos de limpieza con los que puede contar, semana tras semana',
-            lead: 'Programas de limpieza diarios, semanales o mensuales con plan de trabajo por escrito, equipo dedicado, un solo contacto e inspecciones de calidad programadas.',
-            imageAlt: 'Productos de limpieza profesional listos para una visita de mantenimiento',
-            body: 'Un buen contrato de limpieza debe ser simple: un alcance claro, un equipo confiable y alguien que responda cuando usted llama. Nuestros acuerdos detallan cada área y tarea con su frecuencia, un precio mensual fijo y un plazo de un año que se renueva automáticamente, salvo aviso por escrito 30 días antes del aniversario. Algunos clientes están con nosotros hace más de 15 años.',
-            included: ['Plan de trabajo por escrito: cada área, tarea y frecuencia', 'Equipo dedicado y constante', 'Servicio nocturno de lunes a viernes, o en su horario', 'Papel, jabón y bolsas repuestos o suministrados', 'Servicios especiales a pedido: alfombras, pisos, ventanas', 'Inspecciones de calidad y un solo contacto bilingüe'],
-            ideal: ['Instalaciones médicas y laboratorios', 'Edificios de oficinas y administradores', 'Concesionarios de autos', 'Iglesias y escuelas'],
-            faq: [
-                ['¿El contrato puede cambiar si cambian nuestras necesidades?', 'Sí. Revisamos el alcance con usted y ajustamos la frecuencia o las tareas cuando cambian su espacio o su horario.'],
-                ['¿A quién llamamos si algo no se hizo?', 'Tiene un solo contacto que responde en inglés o español y resuelve rápido.'],
-                ['¿Ustedes ponen los suministros?', 'Reponemos papel, jabón y bolsas de su inventario, o los suministramos a precios competitivos.']
-            ]
-        }
     }
 ];
 
 // Old URLs that no longer exist, redirected in .htaccess (and by a small redirect page on hosts without .htaccess).
 export const REDIRECTS = {
     'services/house-cleaning/': 'services/commercial-cleaning/',
-    'services/carpet-cleaning-floor-care/': 'services/carpet-cleaning/'
+    'services/carpet-cleaning-floor-care/': 'services/carpet-cleaning/',
+    'services/disinfection-services/': 'services/medical-office-cleaning/',
+    'services/janitorial-maintenance-contracts/': 'services/commercial-cleaning/'
 };

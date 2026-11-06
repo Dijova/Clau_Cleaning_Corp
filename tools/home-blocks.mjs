@@ -12,8 +12,8 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 const L = {
-    en: { more: 'Learn more →', core: 'Core service', other: 'Other', select: 'Select a service' },
-    es: { more: 'Ver más →', core: 'Servicio principal', other: 'Otro', select: 'Seleccione un servicio' }
+    en: { more: 'Learn more →', core: 'Core service', other: 'Other', select: 'Select a service', towns: 'towns', prev: 'Previous clients', next: 'Next clients' },
+    es: { more: 'Ver más →', core: 'Servicio principal', other: 'Otro', select: 'Seleccione un servicio', towns: 'ciudades', prev: 'Clientes anteriores', next: 'Más clientes' }
 };
 
 function logoFile(slug) {
@@ -26,7 +26,7 @@ export function blocks(lang, rootRel) {
     const l = L[lang];
     const ind = (n) => ' '.repeat(n);
     return {
-        services: SERVICES.map((s) => {
+        services: SERVICES.filter((s) => !s.industry).map((s) => {
             const t = s[lang];
             return `${ind(20)}<article class="service-card${s.featured ? ' is-featured' : ''}">
 ${ind(24)}<img src="${esc(/^https?:/.test(s.image) ? s.image.replace('w=1200', 'w=700') : rootRel + s.image)}" alt="${esc(t.imageAlt)}" loading="lazy" width="700" height="467" data-ph="offices">
@@ -41,6 +41,8 @@ ${ind(24)}</div>
 ${ind(20)}</article>`;
         }).join('\n'),
 
+        industries: SERVICES.filter((s) => s.industry).map((s) => `${ind(20)}<li><a href="services/${s.slug}/"><img src="${esc(/^https?:/.test(s.image) ? s.image.replace('w=1200', 'w=400') : rootRel + s.image)}" alt="" loading="lazy" width="400" height="267" data-ph="offices"><span>${esc(s[lang].name)}</span><small>${esc(s[lang].short)}</small></a></li>`).join('\n'),
+
         'form-options': [
             `${ind(28)}<option value="">${l.select}</option>`,
             ...SERVICES.map((s) => `${ind(28)}<option value="${s.formValue}">${esc(s[lang].name)}</option>`),
@@ -49,10 +51,18 @@ ${ind(20)}</article>`;
 
         'footer-services': SERVICES.map((s) => `${ind(20)}<li><a href="services/${s.slug}/">${esc(s[lang].name)}</a></li>`).join('\n'),
 
-        'area-lists': ['MA', 'NH'].map((st) => `${ind(20)}<h4 class="area-state">${STATE_NAME[st]}</h4>
-${ind(20)}<ul class="area-list area-links">
-${CITY_LIST.filter((c) => c.state === st).map((c) => `${ind(24)}<li><a href="service-areas/${citySlug(c)}/">${esc(c.name)}</a></li>`).join('\n')}
-${ind(20)}</ul>`).join('\n'),
+        'area-lists': ['MA', 'NH'].map((st) => {
+            const towns = CITY_LIST.filter((c) => c.state === st);
+            return `${ind(20)}<details class="area-drop">
+${ind(24)}<summary>${STATE_NAME[st]} <small>${towns.length} ${l.towns}</small></summary>
+${ind(24)}<ul class="area-list area-links">
+${towns.map((c) => `${ind(28)}<li><a href="service-areas/${citySlug(c)}/">${esc(c.name)}</a></li>`).join('\n')}
+${ind(24)}</ul>
+${ind(20)}</details>`;
+        }).join('\n'),
+
+        'carousel-label': `${ind(16)}<button type="button" class="carousel-btn carousel-prev" data-carousel="prev" aria-label="${l.prev}">&#8249;</button>
+${ind(16)}<button type="button" class="carousel-btn carousel-next" data-carousel="next" aria-label="${l.next}">&#8250;</button>`,
 
         'client-strip': CLIENTS.map((c) => {
             const f = logoFile(c.slug);

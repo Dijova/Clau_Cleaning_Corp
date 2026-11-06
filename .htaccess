@@ -9,6 +9,10 @@ Redirect 301 /services/house-cleaning/ https://claucleaningcorp.com/services/com
 Redirect 301 /es/services/house-cleaning/ https://claucleaningcorp.com/es/services/commercial-cleaning/
 Redirect 301 /services/carpet-cleaning-floor-care/ https://claucleaningcorp.com/services/carpet-cleaning/
 Redirect 301 /es/services/carpet-cleaning-floor-care/ https://claucleaningcorp.com/es/services/carpet-cleaning/
+Redirect 301 /services/disinfection-services/ https://claucleaningcorp.com/services/medical-office-cleaning/
+Redirect 301 /es/services/disinfection-services/ https://claucleaningcorp.com/es/services/medical-office-cleaning/
+Redirect 301 /services/janitorial-maintenance-contracts/ https://claucleaningcorp.com/services/commercial-cleaning/
+Redirect 301 /es/services/janitorial-maintenance-contracts/ https://claucleaningcorp.com/es/services/commercial-cleaning/
 
 # Never serve build tools, backend source, mockups or repository files.
 RedirectMatch 404 ^/(\.git|backend|tools|node_modules)(/|$)
