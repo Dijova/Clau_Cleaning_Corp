@@ -13,10 +13,10 @@ export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
 export const NAV = {
     en: { skip: 'Skip to content', menu: 'Open menu', home: 'Home', about: 'About', services: 'Services', gallery: 'Gallery', clients: 'Our Clients', areas: 'Service Areas', contact: 'Contact', quote: 'Free Quote',
         tagline: 'Commercial cleaning, medical facility cleaning, carpet cleaning and floor care in Northern Massachusetts and Southern New Hampshire.',
-        footServices: 'Services', footLinks: 'Company', footContact: 'Contact', serving: 'Serving', privacy: 'Privacy Policy', rights: 'All rights reserved.', call: 'Call +1 978-328-2406' },
+        footServices: 'Services', footLinks: 'Company', footContact: 'Contact', serving: 'Serving', privacy: 'Privacy Policy', rights: 'All rights reserved.', call: 'Call +1 978-328-2406', fabOpen: 'Call or text us', fabCall: 'Call', fabSms: 'Text (SMS)' },
     es: { skip: 'Saltar al contenido', menu: 'Abrir menú', home: 'Inicio', about: 'Nosotros', services: 'Servicios', gallery: 'Galería', clients: 'Nuestros Clientes', areas: 'Zonas de Servicio', contact: 'Contacto', quote: 'Cotización Gratis',
         tagline: 'Limpieza comercial, limpieza de instalaciones médicas, limpieza de alfombras y cuidado de pisos en el norte de Massachusetts y el sur de New Hampshire.',
-        footServices: 'Servicios', footLinks: 'Empresa', footContact: 'Contacto', serving: 'Atendemos', privacy: 'Política de privacidad', rights: 'Todos los derechos reservados.', call: 'Llame al +1 978-328-2406' }
+        footServices: 'Servicios', footLinks: 'Empresa', footContact: 'Contacto', serving: 'Atendemos', privacy: 'Política de privacidad', rights: 'Todos los derechos reservados.', call: 'Llame al +1 978-328-2406', fabOpen: 'Llámenos o escríbanos', fabCall: 'Llamar', fabSms: 'Enviar SMS' }
 };
 
 export const ICON = {
@@ -25,6 +25,8 @@ export const ICON = {
     fb: 'M14 8h3V4h-3a4 4 0 0 0-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8z',
     ig: 'M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM17.5 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z',
     check: 'M9.5 16.2 5.3 12l-1.4 1.4 5.6 5.6L20.1 8.4 18.7 7z',
+    sms: 'M4 3h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H8l-5 4V4a1 1 0 0 1 1-1zm3 6v2h2V9zm4 0v2h2V9zm4 0v2h2V9z',
+    close: 'M19 6.4 17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12z',
     pin: 'M12 2a7 7 0 0 1 7 7c0 5.2-7 13-7 13S5 14.2 5 9a7 7 0 0 1 7-7zm0 4.5A2.5 2.5 0 1 0 12 11.5 2.5 2.5 0 0 0 12 6.5z'
 };
 export const svg = (d) => `<svg aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="${d}"/></svg>`;
@@ -171,7 +173,7 @@ export function footer(lang, root, home) {
                 <h3>${n.footContact}</h3>
                 <address>
                     <a href="tel:+19783282406">+1 978-328-2406</a><br>
-                    <a href="mailto:claucleaningcorpc2@gmail.com">claucleaningcorpc2@gmail.com</a><br>
+                    <a href="mailto:claucleaningcorpc1@gmail.com">claucleaningcorpc1@gmail.com</a><br>
                     1734 Lakeview Ave #169<br>Dracut, MA 01826
                 </address>
             </div>
@@ -186,8 +188,18 @@ export function footer(lang, root, home) {
         </div>
     </footer>
 
-    <a href="tel:+19783282406" class="fab-call" aria-label="${n.call}">${svg(ICON.phone)}</a>`;
+    ${fab(n)}`;
 }
+
+// Floating contact button on every page: opens two options, call and text (SMS).
+// A <details> element, so it works without JavaScript; main.js closes it on outside click / Escape.
+export const fab = (n) => `<details class="fab" data-fab>
+        <summary class="fab-toggle" aria-label="${n.fabOpen}">${svg(ICON.phone).replace('<svg', '<svg class="fab-ico-open"')}${svg(ICON.close).replace('<svg', '<svg class="fab-ico-close"')}<span class="fab-label">${n.fabOpen}</span></summary>
+        <div class="fab-menu">
+            <a href="tel:+19783282406" class="fab-opt">${svg(ICON.phone)}<span>${n.fabCall}<small>+1 978-328-2406</small></span></a>
+            <a href="sms:+19783282406" class="fab-opt">${svg(ICON.sms)}<span>${n.fabSms}<small>+1 978-328-2406</small></span></a>
+        </div>
+    </details>`;
 
 // LocalBusiness used as provider in every page's structured data. Google does not join
 // @id references across pages, so each page carries the business name, phone and address
@@ -201,7 +213,7 @@ export const BUSINESS = {
     logo: `${SITE}/assets/img/icon-512.png`,
     image: `${SITE}/assets/img/og-image.jpg`,
     telephone: '+1-978-328-2406',
-    email: 'claucleaningcorpc2@gmail.com',
+    email: 'claucleaningcorpc1@gmail.com',
     priceRange: '$$',
     address: { '@type': 'PostalAddress', streetAddress: '1734 Lakeview Ave #169', addressLocality: 'Dracut', addressRegion: 'MA', postalCode: '01826', addressCountry: 'US' },
     geo: { '@type': 'GeoCoordinates', latitude: 42.6787, longitude: -71.3242 },

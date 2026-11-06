@@ -36,7 +36,7 @@ $('[data-i18n-attr]').each((_, el) => {
 $('link[rel="canonical"]').attr('href', 'https://claucleaningcorp.com/es/');
 
 // Relative paths: the Spanish page lives one folder deeper.
-const local = (v) => v && !/^(https?:|mailto:|tel:|#|data:|\.\.\/|\/)/.test(v);
+const local = (v) => v && !/^(https?:|mailto:|tel:|sms:|#|data:|\.\.\/|\/)/.test(v);
 $('[src], [href]').each((_, el) => {
     // Links marked data-same-lang point to pages that also exist under /es/ (service pages).
     if ($(el).is('[data-same-lang]')) return;
