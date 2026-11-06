@@ -124,21 +124,48 @@
                     <button type="button" class="chip" data-filter="medical" aria-pressed="false">Medical &amp; labs</button>
                     <button type="button" class="chip" data-filter="facilities" aria-pressed="false">Offices &amp; facilities</button>
                     <button type="button" class="chip" data-filter="floors" aria-pressed="false">Floor care</button>
-                    <button type="button" class="chip" data-filter="carpets" aria-pressed="false">Carpet cleaning</button>
+                    <button type="button" class="chip" data-filter="before-after" aria-pressed="false">Before &amp; after</button>
+                    <button type="button" class="chip" data-filter="video" aria-pressed="false">Videos</button>
                 </div>
                 <ul class="gallery-grid" id="gallery-grid">
-                    <li data-cat="medical" class="tall"><button type="button" class="gallery-item"><img src="https://images.pexels.com/photos/16571733/pexels-photo-16571733.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Disinfected hospital room with medical equipment" loading="lazy" width="800" height="1000"></button></li>
-                    <li data-cat="floors"><button type="button" class="gallery-item"><img src="https://images.pexels.com/photos/6196566/pexels-photo-6196566.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Floor mopping during a commercial cleaning visit" loading="lazy" width="800" height="533"></button></li>
-                    <li data-cat="medical"><button type="button" class="gallery-item"><img src="https://images.pexels.com/photos/7789603/pexels-photo-7789603.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Sanitized clinic examination bed" loading="lazy" width="800" height="533"></button></li>
-                    <li data-cat="carpets"><button type="button" class="gallery-item"><img src="https://images.pexels.com/photos/38325/pexels-photo-38325.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Commercial carpet vacuuming with professional equipment" loading="lazy" width="800" height="533"></button></li>
-                    <li data-cat="facilities" class="tall"><button type="button" class="gallery-item"><img src="https://images.pexels.com/photos/8146331/pexels-photo-8146331.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Spotless office hallway with wooden floors" loading="lazy" width="800" height="1000"></button></li>
-                    <li data-cat="medical"><button type="button" class="gallery-item"><img src="https://images.pexels.com/photos/4099467/pexels-photo-4099467.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Technician disinfecting a table surface" loading="lazy" width="800" height="533"></button></li>
-                    <li data-cat="floors"><button type="button" class="gallery-item"><img src="https://images.pexels.com/photos/6197106/pexels-photo-6197106.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Deep cleaning of a tiled commercial floor" loading="lazy" width="800" height="533"></button></li>
-                    <li data-cat="facilities"><button type="button" class="gallery-item"><img src="https://images.pexels.com/photos/6794930/pexels-photo-6794930.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Clean office hall with glass walls" loading="lazy" width="800" height="533"></button></li>
-                    <li data-cat="carpets"><button type="button" class="gallery-item"><img src="https://images.pexels.com/photos/4107275/pexels-photo-4107275.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Carpet care in a commercial space" loading="lazy" width="800" height="533"></button></li>
-                    <li data-cat="facilities"><button type="button" class="gallery-item"><img src="https://images.pexels.com/photos/2675061/pexels-photo-2675061.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Clean classroom ready for students" loading="lazy" width="800" height="533"></button></li>
-                    <li data-cat="floors"><button type="button" class="gallery-item"><img src="https://images.pexels.com/photos/3769711/pexels-photo-3769711.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Commercial floor cleaning in a dining area" loading="lazy" width="800" height="533"></button></li>
-                    <li data-cat="facilities"><button type="button" class="gallery-item"><img src="https://images.pexels.com/photos/12168815/pexels-photo-12168815.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Rows of clean classroom seats" loading="lazy" width="800" height="533"></button></li>
+                    <li data-cat="before-after" class="wide tall"><figure class="ba-pair">
+                        <div><img src="../assets/img/gallery/hallway-before.webp" alt="Clinic hallway before and after floor stripping and waxing – Before" loading="lazy" width="720" height="1280"><span class="ba-tag">Before</span></div>
+                        <div><img src="../assets/img/gallery/hallway-after.webp" alt="Clinic hallway before and after floor stripping and waxing – After" loading="lazy" width="720" height="1280"><span class="ba-tag ba-after">After</span></div>
+                    </figure></li>
+                    <li data-cat="video" class="tall media-video"><video controls preload="metadata" playsinline poster="../assets/img/gallery/floor-stripping.webp" width="720" height="1280" aria-label="Floor stripping with a rotary floor machine"><source src="../assets/video/floor-stripping.mp4" type="video/mp4"></video></li>
+                    <li data-cat="floors" class="tall"><button type="button" class="gallery-item"><img src="../assets/img/gallery/corridor-polished.webp" alt="Polished vinyl tile corridor after the wax coats" loading="lazy" width="720" height="1280"></button></li>
+                    <li data-cat="before-after" class="wide tall"><figure class="ba-pair">
+                        <div><img src="../assets/img/gallery/therapy-room-before.webp" alt="Physical therapy gym before and after floor care – Before" loading="lazy" width="720" height="1280"><span class="ba-tag">Before</span></div>
+                        <div><img src="../assets/img/gallery/therapy-room-after.webp" alt="Physical therapy gym before and after floor care – After" loading="lazy" width="720" height="1280"><span class="ba-tag ba-after">After</span></div>
+                    </figure></li>
+                    <li data-cat="medical" class="tall"><button type="button" class="gallery-item"><img src="../assets/img/gallery/exam-room-clean.webp" alt="Clean, disinfected treatment room" loading="lazy" width="720" height="1280"></button></li>
+                    <li data-cat="video" class="tall media-video"><video controls preload="metadata" playsinline poster="../assets/img/gallery/floor-waxing.webp" width="720" height="1280" aria-label="Applying floor finish coats"><source src="../assets/video/floor-waxing.mp4" type="video/mp4"></video></li>
+                    <li data-cat="floors" class="tall"><button type="button" class="gallery-item"><img src="../assets/img/gallery/floor-scrubbing.webp" alt="Scrubbing old wax off a vinyl floor" loading="lazy" width="720" height="1280"></button></li>
+                    <li data-cat="before-after" class="wide tall"><figure class="ba-pair">
+                        <div><img src="../assets/img/gallery/gym-before.webp" alt="Clinic floor before and after stripping and waxing – Before" loading="lazy" width="720" height="1280"><span class="ba-tag">Before</span></div>
+                        <div><img src="../assets/img/gallery/gym-after.webp" alt="Clinic floor before and after stripping and waxing – After" loading="lazy" width="720" height="1280"><span class="ba-tag ba-after">After</span></div>
+                    </figure></li>
+                    <li data-cat="medical" class="tall"><button type="button" class="gallery-item"><img src="../assets/img/gallery/clinic-floor-polished.webp" alt="Rehab clinic floor with a fresh high-gloss finish" loading="lazy" width="720" height="1280"></button></li>
+                    <li data-cat="video" class="tall media-video"><video controls preload="metadata" playsinline poster="../assets/img/gallery/floor-result-walkthrough.webp" width="720" height="1280" aria-label="Walkthrough of the finished floors"><source src="../assets/video/floor-result-walkthrough.mp4" type="video/mp4"></video></li>
+                    <li data-cat="before-after" class="wide tall"><figure class="ba-pair">
+                        <div><img src="../assets/img/gallery/equipment-area-before.webp" alt="Exercise equipment area before and after – Before" loading="lazy" width="720" height="1280"><span class="ba-tag">Before</span></div>
+                        <div><img src="../assets/img/gallery/equipment-area-after.webp" alt="Exercise equipment area before and after – After" loading="lazy" width="720" height="1280"><span class="ba-tag ba-after">After</span></div>
+                    </figure></li>
+                    <li data-cat="facilities" class="tall"><button type="button" class="gallery-item"><img src="../assets/img/gallery/waiting-room-polished.webp" alt="Waiting room with clean, polished floors" loading="lazy" width="720" height="1280"></button></li>
+                    <li data-cat="before-after" class="wide tall"><figure class="ba-pair">
+                        <div><img src="../assets/img/gallery/office-before.webp" alt="Staff office before and after cleaning – Before" loading="lazy" width="720" height="1280"><span class="ba-tag">Before</span></div>
+                        <div><img src="../assets/img/gallery/office-after.webp" alt="Staff office before and after cleaning – After" loading="lazy" width="720" height="1280"><span class="ba-tag ba-after">After</span></div>
+                    </figure></li>
+                    <li data-cat="medical" class="tall"><button type="button" class="gallery-item"><img src="../assets/img/gallery/exam-room-2-clean.webp" alt="Exam room ready for the next patient" loading="lazy" width="720" height="1280"></button></li>
+                    <li data-cat="video" class="tall media-video"><video controls preload="metadata" playsinline poster="../assets/img/gallery/floor-drying.webp" width="720" height="1280" aria-label="Air movers drying the floor between coats"><source src="../assets/video/floor-drying.mp4" type="video/mp4"></video></li>
+                    <li data-cat="floors" class="tall"><button type="button" class="gallery-item"><img src="../assets/img/gallery/hallway-polished.webp" alt="Long hallway with a glossy floor finish" loading="lazy" width="720" height="1280"></button></li>
+                    <li data-cat="before-after" class="wide tall"><figure class="ba-pair">
+                        <div><img src="../assets/img/gallery/exam-room-before.webp" alt="Treatment room before and after – Before" loading="lazy" width="720" height="1280"><span class="ba-tag">Before</span></div>
+                        <div><img src="../assets/img/gallery/exam-room-after.webp" alt="Treatment room before and after – After" loading="lazy" width="720" height="1280"><span class="ba-tag ba-after">After</span></div>
+                    </figure></li>
+                    <li data-cat="facilities" class="tall"><button type="button" class="gallery-item"><img src="../assets/img/gallery/treatment-area-polished.webp" alt="Open treatment area after floor care" loading="lazy" width="720" height="1280"></button></li>
+                    <li data-cat="video" class="tall media-video"><video controls preload="metadata" playsinline poster="../assets/img/gallery/floor-finish-coat.webp" width="720" height="1280" aria-label="Finishing a clinic floor"><source src="../assets/video/floor-finish-coat.mp4" type="video/mp4"></video></li>
+                    <li data-cat="floors" class="tall"><button type="button" class="gallery-item"><img src="../assets/img/gallery/clinic-floor-shine.webp" alt="Clinic floor shine after the final coat" loading="lazy" width="720" height="1280"></button></li>
                 </ul>
                 <p class="gallery-cta"><span>See more of our daily work on</span> <a href="https://www.facebook.com/profile.php?id=100068568395875" target="_blank" rel="noopener noreferrer">Facebook</a> · <a href="https://www.instagram.com/claucleaningcorp/" target="_blank" rel="noopener noreferrer">Instagram</a></p>
             </div>

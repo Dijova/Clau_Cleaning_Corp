@@ -29,7 +29,7 @@ export function blocks(lang, rootRel) {
         services: SERVICES.map((s) => {
             const t = s[lang];
             return `${ind(20)}<article class="service-card${s.featured ? ' is-featured' : ''}">
-${ind(24)}<img src="${esc(s.image.replace('w=1200', 'w=700'))}" alt="${esc(t.imageAlt)}" loading="lazy" width="700" height="467" data-ph="offices">
+${ind(24)}<img src="${esc(/^https?:/.test(s.image) ? s.image.replace('w=1200', 'w=700') : rootRel + s.image)}" alt="${esc(t.imageAlt)}" loading="lazy" width="700" height="467" data-ph="offices">
 ${ind(24)}<div class="service-body">
 ${ind(28)}${s.featured ? `<p class="service-tag">${l.core}</p>\n${ind(28)}` : ''}<h3><a href="services/${s.slug}/">${esc(t.name)}</a></h3>
 ${ind(28)}<p>${esc(t.short)}</p>

@@ -7,6 +7,11 @@ import { fileURLToPath } from 'node:url';
 import { COMMON, SERVICES } from './services-data.mjs';
 import { CITY_LIST, STATE_NAME, citySlug } from './locations-data.mjs';
 import { layout, esc, svg, ICON, abs, BUSINESS_ID, breadcrumbs, faqPage } from './layout.mjs';
+import { SITE } from './services-data.mjs';
+
+// Remote (Pexels) URLs are used as is; our own photos are paths from the site root.
+const isRemote = (s) => /^https?:/.test(s);
+const imgUrl = (s, root, w) => (isRemote(s) ? (w ? s.replace('w=1200', `w=${w}`) : s) : root + s);
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -24,7 +29,7 @@ function structuredData(lang, svc) {
                 serviceType: svc.serviceType,
                 description: t.metaDesc,
                 url,
-                image: svc.image,
+                image: isRemote(svc.image) ? svc.image : `${SITE}/${svc.image}`,
                 inLanguage: lang,
                 provider: { '@id': BUSINESS_ID },
                 areaServed: [
@@ -43,8 +48,8 @@ function body(lang, svc) {
     const t = svc[lang];
     const c = COMMON[lang];
     const related = SERVICES.filter((s) => s.slug !== svc.slug);
-    return ({ home }) => `        <section class="svc-hero">
-            <img class="svc-hero-bg" src="${esc(svc.image)}" alt="" data-ph="hide" width="1200" height="800" fetchpriority="high">
+    return ({ root, home }) => `        <section class="svc-hero">
+            <img class="svc-hero-bg" src="${esc(imgUrl(svc.image, root))}" alt="" data-ph="hide" width="1200" height="800" fetchpriority="high">
             <div class="container svc-hero-content">
                 <nav class="breadcrumb" aria-label="Breadcrumb"><a href="${home}">${c.home}</a> <span aria-hidden="true">›</span> <a href="${home}#services">${c.services}</a> <span aria-hidden="true">›</span> <span aria-current="page">${esc(t.name)}</span></nav>
                 <h1>${esc(t.h1)}</h1>
@@ -67,7 +72,7 @@ function body(lang, svc) {
                     </ul>
                 </div>
                 <figure class="svc-figure">
-                    <img src="${esc(svc.image.replace('w=1200', 'w=900'))}" alt="${esc(t.imageAlt)}" loading="lazy" width="900" height="600" data-ph="disinfection">
+                    <img src="${esc(imgUrl(svc.image, root, 900))}" alt="${esc(t.imageAlt)}" loading="lazy" width="900" height="600" data-ph="disinfection">
                 </figure>
             </div>
         </section>

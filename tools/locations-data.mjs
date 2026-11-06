@@ -148,10 +148,8 @@ export const CLIENTS = [
 // Gallery. type: 'image' | 'video' | 'before-after'.
 // Put your own files in assets/img/gallery/ (photos, ~1600px wide JPG/WebP) and
 // assets/video/ (MP4, H.264, under ~15 MB) and use paths like 'assets/img/gallery/x.jpg'.
-// Remote Pexels photos are placeholders until the real photos are added.
 // cat: medical | facilities | floors | carpets | before-after | video
 // ---------------------------------------------------------------------------
-const px = (id, w = 900) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
 
 export const GALLERY_CATS = [
     { key: 'medical', en: 'Medical & labs', es: 'Médico y laboratorios' },
@@ -162,34 +160,49 @@ export const GALLERY_CATS = [
     { key: 'video', en: 'Videos', es: 'Videos' }
 ];
 
+// Our own work: strip & wax and deep cleaning of an outpatient physical therapy clinic.
+const g = (name) => `assets/img/gallery/${name}.webp`;
+const v = (name) => `assets/video/${name}.mp4`;
+
 export const GALLERY = [
-    { type: 'image', cat: 'medical', tall: true, src: px(16571733), w: 800, h: 1000,
-        en: 'Disinfected hospital room with medical equipment', es: 'Habitación hospitalaria desinfectada con equipo médico' },
-    { type: 'image', cat: 'floors', src: px(6196566), w: 800, h: 533,
-        en: 'Floor mopping during a commercial cleaning visit', es: 'Trapeado de pisos durante una limpieza comercial' },
-    { type: 'image', cat: 'medical', src: px(7789603), w: 800, h: 533,
-        en: 'Sanitized clinic examination bed', es: 'Camilla de consultorio desinfectada' },
-    { type: 'image', cat: 'carpets', src: px(38325), w: 800, h: 533,
-        en: 'Commercial carpet vacuuming with professional equipment', es: 'Aspirado de alfombra comercial con equipo profesional' },
-    { type: 'image', cat: 'facilities', tall: true, src: px(8146331), w: 800, h: 1000,
-        en: 'Spotless office hallway with wooden floors', es: 'Pasillo de oficina impecable con pisos de madera' },
-    { type: 'image', cat: 'medical', src: px(4099467), w: 800, h: 533,
-        en: 'Technician disinfecting a table surface', es: 'Técnico desinfectando la superficie de una mesa' },
-    { type: 'image', cat: 'floors', src: px(6197106), w: 800, h: 533,
-        en: 'Deep cleaning of a tiled commercial floor', es: 'Limpieza profunda de un piso comercial de baldosas' },
-    { type: 'image', cat: 'facilities', src: px(6794930), w: 800, h: 533,
-        en: 'Clean office hall with glass walls', es: 'Recepción de oficina limpia con paredes de vidrio' },
-    { type: 'image', cat: 'carpets', src: px(4107275), w: 800, h: 533,
-        en: 'Carpet care in a commercial space', es: 'Cuidado de alfombras en un espacio comercial' },
-    { type: 'image', cat: 'facilities', src: px(2675061), w: 800, h: 533,
-        en: 'Clean classroom ready for students', es: 'Aula limpia lista para los estudiantes' },
-    { type: 'image', cat: 'floors', src: px(3769711), w: 800, h: 533,
-        en: 'Commercial floor cleaning in a dining area', es: 'Limpieza comercial de pisos en un comedor' },
-    { type: 'image', cat: 'facilities', src: px(12168815), w: 800, h: 533,
-        en: 'Rows of clean classroom seats', es: 'Filas de asientos de aula limpios' }
-    // Examples once the real files are added:
-    // { type: 'before-after', cat: 'before-after', before: 'assets/img/gallery/carpet-before.jpg', after: 'assets/img/gallery/carpet-after.jpg', w: 1200, h: 900,
-    //   en: 'Office carpet before and after hot water extraction', es: 'Alfombra de oficina antes y después de la extracción con agua caliente' },
-    // { type: 'video', cat: 'video', src: 'assets/video/floor-strip-wax.mp4', poster: 'assets/img/gallery/floor-strip-wax.jpg', w: 1080, h: 1920,
-    //   en: 'Floor stripping and waxing reel', es: 'Reel de decapado y encerado de pisos' },
+    { type: 'before-after', cat: 'before-after', before: g('hallway-before'), after: g('hallway-after'), w: 720, h: 1280,
+        en: 'Clinic hallway before and after floor stripping and waxing', es: 'Pasillo de clínica antes y después del decapado y encerado del piso' },
+    { type: 'video', cat: 'video', src: v('floor-stripping'), poster: g('floor-stripping'), w: 720, h: 1280,
+        en: 'Floor stripping with a rotary floor machine', es: 'Decapado de piso con máquina rotativa' },
+    { type: 'image', cat: 'floors', tall: true, src: g('corridor-polished'), w: 720, h: 1280,
+        en: 'Polished vinyl tile corridor after the wax coats', es: 'Pasillo de vinil pulido después de las capas de cera' },
+    { type: 'before-after', cat: 'before-after', before: g('therapy-room-before'), after: g('therapy-room-after'), w: 720, h: 1280,
+        en: 'Physical therapy gym before and after floor care', es: 'Gimnasio de fisioterapia antes y después del cuidado del piso' },
+    { type: 'image', cat: 'medical', tall: true, src: g('exam-room-clean'), w: 720, h: 1280,
+        en: 'Clean, disinfected treatment room', es: 'Sala de tratamiento limpia y desinfectada' },
+    { type: 'video', cat: 'video', src: v('floor-waxing'), poster: g('floor-waxing'), w: 720, h: 1280,
+        en: 'Applying floor finish coats', es: 'Aplicación de las capas de acabado del piso' },
+    { type: 'image', cat: 'floors', tall: true, src: g('floor-scrubbing'), w: 720, h: 1280,
+        en: 'Scrubbing old wax off a vinyl floor', es: 'Removiendo la cera vieja de un piso de vinil' },
+    { type: 'before-after', cat: 'before-after', before: g('gym-before'), after: g('gym-after'), w: 720, h: 1280,
+        en: 'Clinic floor before and after stripping and waxing', es: 'Piso de clínica antes y después del decapado y encerado' },
+    { type: 'image', cat: 'medical', tall: true, src: g('clinic-floor-polished'), w: 720, h: 1280,
+        en: 'Rehab clinic floor with a fresh high-gloss finish', es: 'Piso de clínica de rehabilitación con brillo nuevo' },
+    { type: 'video', cat: 'video', src: v('floor-result-walkthrough'), poster: g('floor-result-walkthrough'), w: 720, h: 1280,
+        en: 'Walkthrough of the finished floors', es: 'Recorrido por los pisos terminados' },
+    { type: 'before-after', cat: 'before-after', before: g('equipment-area-before'), after: g('equipment-area-after'), w: 720, h: 1280,
+        en: 'Exercise equipment area before and after', es: 'Área de equipos de ejercicio antes y después' },
+    { type: 'image', cat: 'facilities', tall: true, src: g('waiting-room-polished'), w: 720, h: 1280,
+        en: 'Waiting room with clean, polished floors', es: 'Sala de espera con pisos limpios y pulidos' },
+    { type: 'before-after', cat: 'before-after', before: g('office-before'), after: g('office-after'), w: 720, h: 1280,
+        en: 'Staff office before and after cleaning', es: 'Oficina del personal antes y después de la limpieza' },
+    { type: 'image', cat: 'medical', tall: true, src: g('exam-room-2-clean'), w: 720, h: 1280,
+        en: 'Exam room ready for the next patient', es: 'Consultorio listo para el siguiente paciente' },
+    { type: 'video', cat: 'video', src: v('floor-drying'), poster: g('floor-drying'), w: 720, h: 1280,
+        en: 'Air movers drying the floor between coats', es: 'Ventiladores secando el piso entre capas' },
+    { type: 'image', cat: 'floors', tall: true, src: g('hallway-polished'), w: 720, h: 1280,
+        en: 'Long hallway with a glossy floor finish', es: 'Pasillo largo con acabado brillante' },
+    { type: 'before-after', cat: 'before-after', before: g('exam-room-before'), after: g('exam-room-after'), w: 720, h: 1280,
+        en: 'Treatment room before and after', es: 'Sala de tratamiento antes y después' },
+    { type: 'image', cat: 'facilities', tall: true, src: g('treatment-area-polished'), w: 720, h: 1280,
+        en: 'Open treatment area after floor care', es: 'Área de tratamiento abierta después del cuidado de pisos' },
+    { type: 'video', cat: 'video', src: v('floor-finish-coat'), poster: g('floor-finish-coat'), w: 720, h: 1280,
+        en: 'Finishing a clinic floor', es: 'Terminando el piso de una clínica' },
+    { type: 'image', cat: 'floors', tall: true, src: g('clinic-floor-shine'), w: 720, h: 1280,
+        en: 'Clinic floor shine after the final coat', es: 'Brillo del piso de la clínica después de la última capa' }
 ];
