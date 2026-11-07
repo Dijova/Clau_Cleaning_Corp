@@ -18,6 +18,9 @@ favicon.ico           Classic favicon (plus PNG icons in assets/img/)
 privacy.html          Privacy policy (EN + ES)
 assets/css/styles.css Brand tokens at the top (:root) and all styles
 assets/js/main.js     Menu, gallery filter + lightbox, secure quote form
+assets/js/gallery-motion.js  GSAP gallery motion: animated filter (Flip), before/after slider (Draggable),
+                      scroll reveal (ScrollTrigger), lightbox zoom. Loaded only on pages with a gallery
+assets/js/vendor/gsap/  Self-hosted GSAP 3.15.1 (the CSP only allows scripts from the site itself)
 assets/js/analytics.js  Google Analytics 4 loader (paste the G- ID to turn it on)
 assets/fonts/         Self-hosted Comfortaa + Inter
 assets/img/           Logo family (generated), favicon, OG image

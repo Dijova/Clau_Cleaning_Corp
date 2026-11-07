@@ -488,6 +488,23 @@ ul { list-style: none; }
 .ba-tag { position: absolute; left: 10px; top: 10px; padding: .2rem .6rem; border-radius: 999px; background: rgba(255,255,255,.92); color: var(--forest); font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
 .ba-tag.ba-after { background: var(--leaf); }
 
+/* Before/after drag slider (built by gallery-motion.js from .ba-pair) */
+.gallery-grid li.wide.ba-li { grid-column: auto; }
+.ba-pair.ba-slider { display: block; position: relative; overflow: hidden; border-radius: var(--radius); --pos: 50%; cursor: ew-resize; user-select: none; -webkit-user-select: none; touch-action: pan-y; }
+.ba-slider > div:not(.ba-handle) { position: absolute; inset: 0; border-radius: 0; }
+.ba-slider > div:nth-child(2) { clip-path: inset(0 0 0 var(--pos)); }
+.ba-slider img { pointer-events: none; -webkit-user-drag: none; }
+.ba-slider .ba-tag { top: auto; bottom: 12px; left: 12px; }
+.ba-slider .ba-tag.ba-after { left: auto; right: 12px; }
+.ba-pair .ba-handle { overflow: visible; border-radius: 0; position: absolute; top: 0; bottom: 0; left: var(--pos); width: 3px; margin-left: -1.5px; background: #fff; box-shadow: 0 0 12px rgba(0,0,0,.35); z-index: 2; outline: none; }
+.ba-knob { position: absolute; top: 50%; left: 50%; width: 46px; height: 46px; transform: translate(-50%, -50%); border-radius: 50%; background: #fff; color: var(--forest); display: grid; place-items: center; box-shadow: 0 4px 18px rgba(0,0,0,.3); transition: transform .2s, background .2s; }
+.ba-knob::before { content: "\2039\00a0\203A"; font-size: 1.35rem; font-weight: 700; line-height: 1; }
+.ba-slider:hover .ba-knob, .ba-handle:focus-visible .ba-knob { transform: translate(-50%, -50%) scale(1.1); background: var(--leaf); }
+.ba-handle:focus-visible .ba-knob { outline: 3px solid #fff; outline-offset: 2px; }
+.lightbox[open]::backdrop { animation: lb-fade .35s ease; }
+@keyframes lb-fade { from { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .lightbox[open]::backdrop { animation: none; } }
+
 @media (max-width: 1240px) and (min-width: 961px) {
     #nav-menu a:not(.btn) { padding: .45rem .5rem; font-size: .88rem; }
     .brand img { height: 34px; }
@@ -496,7 +513,7 @@ ul { list-style: none; }
 @media (max-width: 600px) {
     .service-grid { grid-template-columns: 1fr; }
     .client-cards { grid-template-columns: 1fr; }
-    .gallery-grid li.wide { grid-column: span 2; }
+    .gallery-grid li.wide, .gallery-grid li.wide.ba-li { grid-column: span 2; }
     .clients-actions .btn { width: 100%; }
 }
 

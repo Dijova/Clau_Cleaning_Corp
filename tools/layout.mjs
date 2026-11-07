@@ -53,6 +53,11 @@ export function layout({ lang, path, title, desc, jsonld, body, active = '', bod
     const main = body({ root, home });
     // Only pages that still show a Pexels photo need the early connection to Pexels.
     const preconnect = main.includes('images.pexels.com') ? '\n    <link rel="preconnect" href="https://images.pexels.com">' : '';
+    // Only pages with a photo gallery load GSAP (self-hosted: the CSP allows 'self' scripts only).
+    const motion = main.includes('class="gallery-grid"')
+        ? ['gsap', 'ScrollTrigger', 'Flip', 'Draggable'].map((f) => `\n    <script src="${root}assets/js/vendor/gsap/${f}.min.js" defer></script>`).join('')
+            + `\n    <script src="${root}assets/js/gallery-motion.js" defer></script>`
+        : '';
 
     return `<!DOCTYPE html>
 <html lang="${lang}">
@@ -94,7 +99,7 @@ export function layout({ lang, path, title, desc, jsonld, body, active = '', bod
     <script type="application/ld+json">
 ${JSON.stringify(jsonld, null, 2)}
     </script>
-    <script src="${root}assets/js/analytics.js" defer></script>
+    <script src="${root}assets/js/analytics.js" defer></script>${motion}
     <script src="${root}assets/js/main.js" defer></script>
 </head>
 
