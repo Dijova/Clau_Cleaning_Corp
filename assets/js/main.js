@@ -134,9 +134,14 @@
                 c.classList.toggle('is-active', on);
                 c.setAttribute('aria-pressed', String(on));
             });
-            grid.querySelectorAll('li').forEach(function (li) {
-                li.hidden = f !== 'all' && li.getAttribute('data-cat') !== f;
-            });
+            var apply = function () {
+                grid.querySelectorAll('li').forEach(function (li) {
+                    li.hidden = f !== 'all' && li.getAttribute('data-cat') !== f;
+                });
+            };
+            // gallery-motion.js (GSAP Flip) animates the change when it is loaded.
+            if (window.ClauGallery) window.ClauGallery.filter(grid, apply);
+            else apply();
         });
     });
 
@@ -160,16 +165,21 @@
             if (!btn) return;
             show(visibleItems().indexOf(btn.parentElement));
             lb.showModal();
+            if (window.ClauGallery) window.ClauGallery.open(btn.querySelector('img'), lb, lbImg);
         });
+        var step = function (d) {
+            if (window.ClauGallery) window.ClauGallery.swap(lbImg, d, function () { show(current + d); });
+            else show(current + d);
+        };
         lb.addEventListener('click', function (e) {
             var action = e.target.getAttribute('data-lb');
             if (action === 'close' || e.target === lb) lb.close();
-            else if (action === 'prev') show(current - 1);
-            else if (action === 'next') show(current + 1);
+            else if (action === 'prev') step(-1);
+            else if (action === 'next') step(1);
         });
         lb.addEventListener('keydown', function (e) {
-            if (e.key === 'ArrowLeft') show(current - 1);
-            if (e.key === 'ArrowRight') show(current + 1);
+            if (e.key === 'ArrowLeft') step(-1);
+            if (e.key === 'ArrowRight') step(1);
         });
     }
 
